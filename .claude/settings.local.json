@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx --version)",
+      "mcp__claude_ai_Supabase__get_cost",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --turbopack --yes)",
+      "mcp__claude_ai_Supabase__confirm_cost",
+      "mcp__claude_ai_Supabase__create_project"
+    ]
+  }
+}
