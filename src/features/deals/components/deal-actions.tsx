@@ -25,7 +25,6 @@ export function DealActions({
   dealId: string;
   status: Status;
 }) {
-  const t = useTranslations("deals.actions");
   const next = NEXT_STATUS[status];
 
   if (status === "closed" || status === "cancelled") return null;

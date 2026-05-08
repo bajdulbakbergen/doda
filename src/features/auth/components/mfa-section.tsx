@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { Alert } from "@/shared/ui/alert";
 import { Button } from "@/shared/ui/button";
@@ -24,7 +24,7 @@ type Enrollment = {
 
 export function MfaSection() {
   const t = useTranslations("security.mfa");
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
   const [factors, setFactors] = useState<Factor[]>([]);
   const [enrollment, setEnrollment] = useState<Enrollment | null>(null);
   const [code, setCode] = useState("");
@@ -32,7 +32,7 @@ export function MfaSection() {
   const [success, setSuccess] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
-  async function loadFactors() {
+  const loadFactors = useCallback(async () => {
     const { data } = await supabase.auth.mfa.listFactors();
     const all = (data?.totp ?? []).map((f) => ({
       id: f.id,
@@ -41,12 +41,13 @@ export function MfaSection() {
       friendly_name: f.friendly_name,
     }));
     setFactors(all);
-  }
+  }, [supabase]);
 
   useEffect(() => {
+    // setState inside async loadFactors происходит ПОСЛЕ await, не синхронно в effect body.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void loadFactors();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [loadFactors]);
 
   async function startEnroll() {
     setError(null);

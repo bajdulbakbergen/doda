@@ -21,6 +21,7 @@ export async function signInAction(
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
+    console.error("[signIn] Supabase auth error:", error.message, error);
     const m = error.message.toLowerCase();
     if (m.includes("invalid login")) {
       return { status: "error", errorKey: "invalidCredentials" };

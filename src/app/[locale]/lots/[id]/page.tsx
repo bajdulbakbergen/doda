@@ -49,6 +49,8 @@ export default async function LotDetailPage({ params }: Props) {
   const isVerified = profile?.is_verified ?? false;
   const myBid = bids.find((b) => b.bidder_id === profile?.id) ?? null;
   const lowestBid = bids[0]?.amount ?? null;
+  // Server component, рендерится по запросу — Date.now() даёт время запроса.
+  // eslint-disable-next-line react-hooks/purity
   const deadlinePassed = new Date(lot.deadline_at).getTime() <= Date.now();
   const canBid =
     !!profile &&

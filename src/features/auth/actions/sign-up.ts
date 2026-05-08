@@ -41,6 +41,8 @@ export async function signUpAction(
   });
 
   if (error) {
+    // Лог в Vercel Functions logs для отладки
+    console.error("[signUp] Supabase auth error:", error.message, error);
     return { status: "error", errorKey: mapAuthError(error.message) };
   }
 

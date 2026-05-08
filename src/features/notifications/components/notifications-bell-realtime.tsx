@@ -11,15 +11,20 @@ type Props = {
   initialUnread: number;
 };
 
+/**
+ * Bell-counter с realtime инкрементом.
+ *
+ * Архитектурный приём: храним только `delta` (изменения с момента mount),
+ * отображаемое значение = derived state из `initialUnread + delta`. Это даёт:
+ *   - сброс к серверному значению при ремаунте после navigation (initialUnread свежий)
+ *   - инкремент при INSERT events
+ *   - 0 на странице /notifications (там свежий initialUnread тоже 0 после mark-read)
+ * И не требует setState внутри useEffect для синхронизации с пропами.
+ */
 export function NotificationsBellRealtime({ userId, initialUnread }: Props) {
   const t = useTranslations("notifications");
   const pathname = usePathname();
-  const [unread, setUnread] = useState(initialUnread);
-
-  // Re-sync from server when pathname changes (e.g. user navigates to /notifications and reads them).
-  useEffect(() => {
-    setUnread(initialUnread);
-  }, [initialUnread]);
+  const [delta, setDelta] = useState(0);
 
   useEffect(() => {
     const supabase = createClient();
@@ -33,18 +38,21 @@ export function NotificationsBellRealtime({ userId, initialUnread }: Props) {
           table: "notifications",
           filter: `user_id=eq.${userId}`,
         },
-        () => setUnread((c) => c + 1),
+        () => {
+          // На странице /notifications не инкрементим — там и так показывается 0.
+          if (pathname !== "/notifications") {
+            setDelta((d) => d + 1);
+          }
+        },
       )
       .subscribe();
     return () => {
       void supabase.removeChannel(channel);
     };
-  }, [userId]);
+  }, [userId, pathname]);
 
-  // Сбрасываем счётчик когда юзер на странице уведомлений (server отметит при visit).
-  useEffect(() => {
-    if (pathname === "/notifications") setUnread(0);
-  }, [pathname]);
+  const unread =
+    pathname === "/notifications" ? 0 : Math.max(0, initialUnread + delta);
 
   return (
     <Link

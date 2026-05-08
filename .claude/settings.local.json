@@ -31,7 +31,14 @@
       "Bash(powershell -Command 'Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }')",
       "Bash(gh auth *)",
       "Bash(git config *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "mcp__claude_ai_Supabase__list_projects",
+      "Bash(git commit --allow-empty -m ' *)",
+      "Bash(grep -E \"doda\\\\\\\\\\\\\\\\src\")"
     ]
   }
 }
