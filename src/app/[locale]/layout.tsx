@@ -20,6 +20,11 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// Все страницы под [locale] рендерим per-request: Header читает сессию через
+// cookies(), protected routes делают redirect() при отсутствии профиля.
+// Без этого build падает на prerender /ru/account, /ru/messages и т.д.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: { default: siteConfig.name, template: `%s — ${siteConfig.name}` },
   description: siteConfig.description,
