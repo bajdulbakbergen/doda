@@ -1,0 +1,10 @@
+.next
+node_modules
+.vercel
+out
+build
+dist
+package-lock.json
+public
+.git
+*.md

@@ -1,0 +1,574 @@
+{
+  "common": {
+    "appName": "Doda",
+    "tagline": "Қазақстандағы B2B үшін тендерлер және кері аукциондар"
+  },
+  "nav": {
+    "lots": "Лоттар",
+    "categories": "Санаттар",
+    "feed": "Лента",
+    "messages": "Хабарламалар",
+    "signIn": "Кіру",
+    "signUp": "Тіркелу",
+    "createLot": "Лот құру",
+    "account": "Жеке кабинет",
+    "deals": "Мәмілелер"
+  },
+  "footer": {
+    "company": "Компания",
+    "legal": "Заңдық ақпарат",
+    "support": "Қолдау",
+    "about": "Платформа туралы",
+    "contacts": "Байланыстар",
+    "termsOfUse": "Пайдаланушы келісімі",
+    "privacyPolicy": "Құпиялық саясаты",
+    "publicOffer": "Жария оферта",
+    "personalDataConsent": "Дербес деректерді өңдеуге келісім",
+    "tendersRules": "Сауда-саттық регламенті",
+    "disputeResolution": "Дауларды шешу регламенті",
+    "help": "Көмек",
+    "rights": "Барлық құқықтар қорғалған"
+  },
+  "home": {
+    "hero": {
+      "title": "Қазақстан B2B үшін сатып алулар мен тендерлер",
+      "subtitle": "Лотты бір минутта жариялаңыз, верификацияланған мердігерлерден ұсыныстар алыңыз, баға мен беделі бойынша үздігін таңдаңыз.",
+      "ctaCustomer": "Лот құру",
+      "ctaContractor": "Тапсырыс табу"
+    },
+    "features": {
+      "transparency": {
+        "title": "Толық ашықтық",
+        "body": "Әрбір мердігерде ұсыныстардың, мәмілелердің және пікірлердің ашық тарихы бар. Жасырын рейтинг жоқ."
+      },
+      "realtime": {
+        "title": "Нақты уақыттағы аукцион",
+        "body": "Ұсыныстар бірден жаңарады. Anti-sniping кеш ұсыныстарға қарай мерзімді ұзартады."
+      },
+      "verification": {
+        "title": "ЖК және ЖШС верификациясы",
+        "body": "Лот құру мен ұсыныс беру тек ЖСН/БСН расталған қатысушыларға қолжетімді."
+      }
+    }
+  },
+  "auth": {
+    "signInTitle": "Кіру",
+    "signInSubtitle": "Жалғастыру үшін аккаунтқа кіріңіз",
+    "signInCta": "Кіру",
+    "signUpTitle": "Тіркелу",
+    "signUpSubtitle": "Бір минутта аккаунт ашыңыз",
+    "signUpCta": "Аккаунт ашу",
+    "forgotPasswordTitle": "Қол жетімділікті қалпына келтіру",
+    "forgotPasswordSubtitle": "Email енгізіңіз — құпиясөзді ауыстыру сілтемесін жібереміз",
+    "forgotPasswordHint": "Егер мұндай email тіркелген болса, сілтеме бір минут ішінде келеді",
+    "forgotPasswordLink": "Құпиясөзді ұмыттыңыз ба?",
+    "sendResetLinkCta": "Сілтеме жіберу",
+    "resetPasswordTitle": "Жаңа құпиясөз",
+    "resetPasswordSubtitle": "Кіру үшін жаңа құпиясөз орнатыңыз",
+    "newPasswordLabel": "Жаңа құпиясөз",
+    "confirmPasswordLabel": "Құпиясөзді қайталаңыз",
+    "updatePasswordCta": "Сақтау",
+    "checkEmailTitle": "Поштаны тексеріңіз",
+    "checkEmailBody": "Сізге растау хаты жіберілді. Аккаунтты белсендіру үшін хаттағы сілтемеге өтіңіз.",
+    "emailLabel": "Email",
+    "passwordLabel": "Құпиясөз",
+    "passwordHint": "Кемінде 8 таңба",
+    "displayNameLabel": "Аты немесе компания атауы",
+    "displayNameHint": "Басқа қатысушыларға көрінеді",
+    "haveAccount": "Аккаунтыңыз бар ма? Кіру",
+    "noAccount": "Аккаунт жоқ па?",
+    "backToSignIn": "Кіруге қайту",
+    "signOut": "Шығу",
+    "legalAgreement": "Тіркелу арқылы сіз <terms>пайдаланушы келісімімен</terms> және <privacy>құпиялық саясатымен</privacy> келісесіз",
+    "errors": {
+      "missingFields": "Барлық міндетті өрістерді толтырыңыз",
+      "invalidEmail": "Email қате",
+      "invalidCredentials": "Email немесе құпиясөз қате",
+      "emailNotConfirmed": "Email расталмаған. Поштаңызды тексеріңіз",
+      "emailTaken": "Бұл email тіркелген",
+      "passwordTooShort": "Құпиясөз кемінде 8 таңба болуы керек",
+      "passwordWeak": "Құпиясөз тым жеңіл",
+      "passwordMismatch": "Құпиясөздер сәйкес емес",
+      "displayNameTooLong": "Аты тым ұзын",
+      "rateLimit": "Тым көп әрекет. Кейінірек көріңіз",
+      "sessionExpired": "Сессия аяқталды. Сілтемені қайта сұраңыз",
+      "unknown": "Қате орын алды. Кейінірек көріңіз"
+    },
+    "messages": {
+      "passwordResetSent": "Егер мұндай email тіркелген болса, біз сізге құпиясөзді қалпына келтіру сілтемесін жібердік"
+    }
+  },
+  "account": {
+    "pageTitle": "Жеке кабинет",
+    "pageSubtitle": "Профиль мен баптауларды басқару",
+    "viewPublic": "Жария профильді ашу",
+    "securityLink": "Қауіпсіздік",
+    "profileSection": "Профиль",
+    "displayNameLabel": "Аты немесе компания атауы",
+    "slugLabel": "Профиль мекенжайы",
+    "slugHint": "2-32 таңба: латын, сан, сызықша. /u/... сілтемесінде қолданылады",
+    "cityLabel": "Қала",
+    "bioLabel": "Өзіңіз туралы",
+    "bioHint": "1000 таңбаға дейін. Немен айналысатыныңызды айтыңыз",
+    "preferredLocaleLabel": "Әдепкі тіл",
+    "saveCta": "Сақтау",
+    "saved": "Өзгерістер сақталды",
+    "avatar": {
+      "title": "Аватар",
+      "hint": "PNG, JPG, WEBP немесе GIF. 5 МБ дейін",
+      "chooseFile": "Файл жүктеу",
+      "uploaded": "Аватар жаңартылды",
+      "errors": {
+        "unauthorized": "Аватарды өзгерту үшін кіріңіз",
+        "noFile": "Файл таңдалмаған",
+        "fileTooLarge": "Файл 5 МБ-тан үлкен",
+        "invalidFileType": "Тек PNG, JPG, WEBP, GIF қолдау табады",
+        "uploadFailed": "Файл жүктелмеді",
+        "unknown": "Қате орын алды"
+      }
+    },
+    "errors": {
+      "unauthorized": "Аккаунтқа кіріңіз",
+      "displayNameInvalid": "Атын жазыңыз (80 таңбаға дейін)",
+      "slugInvalid": "Мекенжай: 2-32 таңба, латын, сан, сызықша",
+      "slugTaken": "Бұл мекенжай бос емес",
+      "bioTooLong": "Өзіңіз туралы тым ұзын (макс. 1000 таңба)",
+      "cityTooLong": "Қала аты тым ұзын",
+      "localeInvalid": "Қолдау табылмайтын тіл",
+      "unknown": "Сақтау сәтсіз. Кейінірек көріңіз"
+    }
+  },
+  "verification": {
+    "pageTitle": "ЖК/ЖШС верификациясы",
+    "pageSubtitle": "Заңды тұлға мәртебесін растаңыз — бұл лот құру мен ұсыныс беруді ашады.",
+    "submitCta": "Тексеруге жіберу",
+    "entityTypeLabel": "Ұйым түрі",
+    "entityTypePlaceholder": "Түрін таңдаңыз",
+    "entityTypeHint": "Жеке кәсіпкер немесе ЖШС",
+    "entityTypeIP": "Жеке кәсіпкер",
+    "entityTypeTOO": "ЖШС",
+    "legalNameLabel": "Заңды атауы",
+    "legalNameHint": "Тіркеу куәлігіндегідей толық атау",
+    "binLabel": "БСН/ЖСН",
+    "binHint": "Бос орынсыз 12 сан",
+    "documentsLabel": "Құжат сканерлері",
+    "documentsHint": "ЖКҚ сканері, ЖШС үшін — тіркеу куәлігі. PDF, PNG, JPG, WEBP. Әрқайсысы 10 МБ-қа дейін, барлығы 5 файлға дейін.",
+    "status": {
+      "approved": "✓ Аккаунт верификацияланды. Сіз лот құра аласыз және ұсыныс бере аласыз.",
+      "pending": "Өтінім тексерілуде. Әдетте 1-2 жұмыс күні алады.",
+      "rejected": "Өтінім қабылданбады. Түзетулермен қайта жіберіңіз."
+    },
+    "banner": {
+      "notVerified": "Аккаунт верификацияланбаған — кейбір әрекеттер қолжетімді емес",
+      "pending": "Верификация өтінімі қаралуда",
+      "startCta": "Верификациядан өту"
+    },
+    "errors": {
+      "unauthorized": "Аккаунтқа кіріңіз",
+      "entityTypeInvalid": "Ұйым түрін таңдаңыз",
+      "legalNameInvalid": "Заңды атауы: 2-200 таңба",
+      "binInvalid": "БСН дәл 12 сан болуы керек",
+      "noDocuments": "Кемінде бір құжат тіркеңіз",
+      "tooManyDocuments": "5 файлдан көп болмауы керек",
+      "fileTooLarge": "Файл 10 МБ-тан үлкен",
+      "invalidFileType": "PDF, PNG, JPG, WEBP қана рұқсат етілген",
+      "uploadFailed": "Құжат жүктелмеді",
+      "alreadySubmitted": "Сіздің белсенді өтінімдеріңіз бар",
+      "binBlacklisted": "Бұл БСН/ЖСН қара тізімде. Қолдау қызметіне хабарласыңыз.",
+      "unknown": "Қате орын алды"
+    }
+  },
+  "security": {
+    "pageTitle": "Қауіпсіздік",
+    "pageSubtitle": "2FA және сеанстар",
+    "mfa": {
+      "title": "Екі факторлы аутентификация",
+      "subtitle": "TOTP қосымшасы арқылы аккаунтты қорғаңыз (Google Authenticator, 1Password, Bitwarden т.с.с.)",
+      "addFactor": "TOTP қосу",
+      "scanQrTitle": "QR-кодты сканерлеңіз",
+      "scanQrHint": "Аутентификатор қосымшасын ашып кодты сканерлеңіз. Содан кейін қосымшадан 6 таңбалы кодты енгізіңіз.",
+      "manualSecret": "Немесе құпияны қолмен енгізіңіз:",
+      "codeLabel": "Қосымшадан код",
+      "codeHint": "6 сан",
+      "verifyCta": "Растау",
+      "cancel": "Болдырмау",
+      "remove": "Жою",
+      "verified": "Расталған",
+      "unverified": "Растауды күтуде",
+      "enrolled": "✓ TOTP қосылды",
+      "unenrolled": "TOTP өшірілді"
+    }
+  },
+  "categories": {
+    "title": "Санаттар",
+    "subtitle": "Сатып алу түрі бойынша платформа бөлімдері"
+  },
+  "lots": {
+    "backToCatalog": "Барлық лоттар",
+    "backToCategories": "Барлық санаттар",
+    "status": {
+      "draft": "Жоба",
+      "open": "Ашық",
+      "closing": "Жабылуда",
+      "closed": "Жабылды",
+      "cancelled": "Бас тартылды"
+    },
+    "deadline": {
+      "ended": "Аяқталды",
+      "daysHours": "{days} күн {hours} сағ",
+      "hoursMinutes": "{hours} сағ {minutes} мин",
+      "minutesSeconds": "{minutes}:{seconds, number, ::00}",
+      "seconds": "{seconds} сек"
+    },
+    "card": {
+      "bidsCount": "{count, plural, =0 {Ұсыныстар жоқ} one {# ұсыныс} other {# ұсыныс}}",
+      "bestBid": "Үздік:",
+      "startingPrice": "Бастапқы:",
+      "deadline": "Дедлайн:"
+    },
+    "filters": {
+      "category": "Санат",
+      "allCategories": "Барлық санаттар",
+      "region": "Аймақ",
+      "regionPlaceholder": "Мысалы: Астана",
+      "status": "Күй",
+      "statusActive": "Белсенді"
+    },
+    "catalog": {
+      "title": "Лоттар",
+      "subtitle": "Тапсырыс берушілерден ашық тендерлер",
+      "createCta": "Лот құру",
+      "empty": "Таңдалған сүзгілер бойынша лоттар жоқ",
+      "lotsInCategory": "{count, plural, =0 {Лоттар жоқ} one {# лот} other {# лот}}"
+    },
+    "form": {
+      "pageTitle": "Жаңа лот",
+      "pageSubtitle": "Не сатып алу керектігін сипаттаңыз, санатты және ұсыныс қабылдау дедлайнын таңдаңыз",
+      "titleLabel": "Лот тақырыбы",
+      "titleHint": "Қысқаша: не сатып аласыз. 5-200 таңба",
+      "descriptionLabel": "Сипаттама",
+      "descriptionHint": "Сипаттамалар, көлем, талаптар. 20-5000 таңба",
+      "categoryLabel": "Санат",
+      "categoryPlaceholder": "Санатты таңдаңыз",
+      "regionLabel": "Жеткізу аймағы",
+      "regionHint": "Қала немесе облыс",
+      "deadlineLabel": "Ұсыныс қабылдау дедлайны",
+      "deadlineHint": "Қазірден кемінде 5 минут кейін",
+      "startingPriceLabel": "Бастапқы баға",
+      "startingPriceHint": "Міндетті емес, теңгемен",
+      "maxPriceLabel": "Максималды баға",
+      "maxPriceHint": "Міндетті емес, теңгемен",
+      "isPrivateLabel": "Көрінуі",
+      "isPrivateHint": "Жабық лоттар тек шақырылған мердігерлерге көрінеді",
+      "isPrivateInline": "Жабық лот (шақыру арқылы)",
+      "submitCta": "Жариялау",
+      "notVerifiedBanner": "Лот құру тек верификацияланған аккаунттарға қолжетімді",
+      "verifyCta": "Верификациядан өту",
+      "errors": {
+        "unauthorized": "Аккаунтқа кіріңіз",
+        "notVerified": "Лотты тек верификацияланған пайдаланушылар жасай алады",
+        "titleInvalid": "Тақырып: 5-200 таңба",
+        "descriptionInvalid": "Сипаттама: 20-5000 таңба",
+        "categoryRequired": "Санатты таңдаңыз",
+        "regionInvalid": "Аймақ: 2-100 таңба",
+        "deadlineInvalid": "Дедлайн қате",
+        "deadlineTooSoon": "Дедлайн кемінде 5 минут кейін болуы керек",
+        "priceInvalid": "Баға оң сан болуы керек",
+        "priceConsistency": "Максималды баға бастапқыдан кем болмауы керек",
+        "createFailed": "Лот жасалмады"
+      }
+    },
+    "detail": {
+      "privateBadge": "Жабық",
+      "descriptionSection": "Сипаттама",
+      "bidsSection": "Ұсыныстар",
+      "bidsCount": "{count, plural, =0 {ұсыныстар жоқ} one {# ұсыныс} other {# ұсыныс}}",
+      "deadlineLabel": "Аяғына дейін",
+      "startingPrice": "Бастапқы:",
+      "maxPrice": "Максимум:",
+      "bidFormTitle": "Ұсыныс беру",
+      "signInToBid": "Ұсыныс беру үшін кіріңіз",
+      "verifyToBid": "Ұсыныстар беру үшін верификациядан өтіңіз",
+      "biddingEnded": "Ұсыныс қабылдау аяқталды",
+      "ownerControls": "Лотты басқару",
+      "selectWinnerHint": "Төмендегі тізімнен жеңімпаз ұсынысты таңдаңыз",
+      "winnerSelected": "Жеңімпаз таңдалды",
+      "askQuestion": "Сұрақ қою"
+    },
+    "actions": {
+      "close": "Ұсыныс қабылдауды жабу",
+      "selectWinner": "Жеңімпазды таңдау",
+      "errors": {
+        "unauthorized": "Авторизацияланбаған",
+        "lot_not_found": "Лот табылмады",
+        "lot_not_open": "Ұсыныс қабылдау жабық",
+        "lot_not_closed": "Алдымен ұсыныс қабылдауды жабыңыз",
+        "not_owner": "Тек лот иесі мұны жасай алады",
+        "winner_already_selected": "Жеңімпаз таңдалған",
+        "bid_not_found": "Ұсыныс табылмады",
+        "bid_lot_mismatch": "Ұсыныс басқа лотқа қатысты",
+        "missing_params": "Параметрлер жетіспейді"
+      }
+    }
+  },
+  "bids": {
+    "form": {
+      "amountLabel": "Сіздің ұсыныс, ₸",
+      "amountHint": "Максималды рұқсат: {max}. Минималды қадам: {step}",
+      "amountHintFirst": "Бұл осы лоттағы алғашқы ұсыныс болады",
+      "submitCta": "Ұсыныс беру",
+      "updateCta": "Ұсынысты өзгерту",
+      "yourCurrentBid": "Сіздің ағымдағы ұсыныс",
+      "changesLeft": "{count, plural, =0 {өзгертулер жоқ} one {# өзгерту қалды} other {# өзгерту қалды}}",
+      "changesExhausted": "3 өзгерту лимиті біткен",
+      "success": "Ұсыныс қабылданды",
+      "errors": {
+        "unauthorized": "Аккаунтқа кіріңіз",
+        "not_verified": "Тек верификацияланған мердігерлер ұсыныс бере алады",
+        "lot_not_found": "Лот табылмады",
+        "lot_not_open": "Ұсыныс қабылдау жабық",
+        "lot_expired": "Дедлайн өтіп кетті",
+        "owner_cannot_bid": "Лот иесі ұсыныс бере алмайды",
+        "invalid_amount": "Сома нөлден жоғары болуы керек",
+        "amount_above_max": "Сома лоттың максималды бағасынан жоғары",
+        "amount_above_starting": "Алғашқы ұсыныс бастапқы бағадан жоғары бола алмайды",
+        "step_too_small": "Қадам тым кіші — ағымдағы үздіктен минималды қадамға төмен түсу керек",
+        "max_changes_reached": "3 өзгерту лимиті біткен",
+        "amount_unchanged": "Сома өзгермеген",
+        "unknown": "Қате орын алды"
+      }
+    },
+    "list": {
+      "empty": "Әлі ұсыныстар жоқ — бірінші болыңыз",
+      "anonymous": "Аноним",
+      "yours": "Бұл сіз",
+      "winner": "Жеңімпаз",
+      "changesCount": "{count, plural, one {# өзгерту} other {# өзгерту}}"
+    }
+  },
+  "profile": {
+    "verified": "Верификацияланған",
+    "memberSince": "Платформада {date} бастап",
+    "reviewsSection": "Пікірлер",
+    "reviewsEmpty": "Әлі пікірлер жоқ. Олар жабылған мәмілелерден кейін пайда болады.",
+    "postsSection": "Жарияланымдар",
+    "history": {
+      "title": "Лоттарға қатысу тарихы",
+      "empty": "Қолданушы әлі саудаға қатыспаған. Мұнда оның ұсыныстары мен мәмілелері пайда болады.",
+      "won": "Жеңіп алды",
+      "placedAt": "{date} жіберілді",
+      "changes": "{count, plural, one {# өзгерту} other {# өзгерту}}"
+    }
+  },
+  "deals": {
+    "roleCustomer": "Тапсырыс беруші",
+    "roleContractor": "Мердігер",
+    "status": {
+      "proposed": "Ұсыныс қабылданды",
+      "contracted": "Шарт қол қойылды",
+      "paid": "Төленді",
+      "delivered": "Жеткізілді",
+      "closed": "Аяқталды",
+      "cancelled": "Бас тартылды"
+    },
+    "card": {
+      "role": "{role}",
+      "asCustomer": "Мен тапсырыс берушімін",
+      "asContractor": "Мен мердігермін"
+    },
+    "list": {
+      "title": "Менің мәмілелерім",
+      "subtitle": "Сіз қатысатын барлық мәмілелер",
+      "empty": "Мәмілелер жоқ. Олар жеңімпазды таңдағанда немесе сіз жеңімпаз болғанда пайда болады."
+    },
+    "detail": {
+      "title": "Мәміле",
+      "backToLot": "Лотқа",
+      "statusSection": "Мәміле күйі",
+      "actionsSection": "Әрекеттер",
+      "reviewsSection": "Мәміле бойынша пікірлер",
+      "cancelReason": "Бас тарту себебі"
+    },
+    "actions": {
+      "advance": {
+        "contracted": "Шарт қол қойылды",
+        "paid": "Төлем алынды",
+        "delivered": "Жеткізу/жұмыс орындалды",
+        "closed": "Мәмілені жабу"
+      },
+      "cancelOpen": "Мәмілені жою",
+      "cancelConfirm": "Жоюды растау",
+      "cancelDismiss": "Жоймау",
+      "cancelReasonPlaceholder": "Жою себебі (міндетті емес, 500 таңбаға дейін)",
+      "errors": {
+        "unauthorized": "Авторизацияланбаған",
+        "deal_not_found": "Мәміле табылмады",
+        "not_a_participant": "Сіз бұл мәмілеге қатысушы емессіз",
+        "invalid_transition": "Бұл күй ауысуы рұқсат етілмеген",
+        "deal_already_finalized": "Мәміле аяқталған",
+        "missing_params": "Параметрлер жетіспейді",
+        "unknown": "Қате орын алды"
+      }
+    }
+  },
+  "reviews": {
+    "form": {
+      "title": "{name} туралы пікір қалдырыңыз",
+      "subtitle": "Сіздің пікіріңіз жария және басқа қатысушыларға көмектеседі",
+      "ratingLabel": "Бағалау",
+      "commentLabel": "Пікір",
+      "commentHint": "1000 таңбаға дейін. Не жақсы болды, нені жақсартуға болады.",
+      "submitCta": "Пікірді жариялау",
+      "success": "Рахмет! Пікір жарияланды.",
+      "errors": {
+        "missing_params": "Деректер жетіспейді",
+        "rating_invalid": "1-ден 5-ке дейін баға қойыңыз",
+        "comment_too_long": "Пікір тым ұзын",
+        "unauthorized": "Аккаунтқа кіріңіз",
+        "already_reviewed": "Сіз бұл мәміле бойынша пікір қалдырғансыз",
+        "deal_not_closed": "Пікір тек мәміле жабылғаннан кейін қолжетімді",
+        "unknown": "Қате орын алды"
+      }
+    },
+    "summary": {
+      "rating": "Рейтинг",
+      "ofReviews": "{count, plural, =0 {пікірлер жоқ} one {# пікір} other {# пікір}}",
+      "noReviews": "Пікірлер жоқ",
+      "totalDeals": "Мәмілелер",
+      "split": "{customer} тапсырыс беруші ретінде / {contractor} мердігер ретінде",
+      "completed": "Жабылған",
+      "percentage": "Барлығының {pct}%",
+      "cancelled": "Бас тартылған"
+    }
+  },
+  "notifications": {
+    "pageTitle": "Хабарламалар",
+    "pageSubtitle": "Сіздің лоттарыңыз, ұсыныстарыңыз және мәмілелеріңіз бойынша барлық оқиғалар",
+    "empty": "Әлі хабарлама жоқ",
+    "markAllRead": "Барлығын оқылған деп белгілеу",
+    "bellAria": "Хабарламалар",
+    "item": {
+      "lot_bid_placed": "<b>{bidder}</b> сіздің «{lot}» лотыңызға <b>{amount}</b> ұсыныс берді",
+      "lot_winner_selected": "Сіз «<b>{lot}</b>» лотының жеңімпазы болдыңыз",
+      "deal_status_changed": "«{lot}» бойынша мәміле күйі <b>{status}</b> болды",
+      "review_received": "<b>{reviewer}</b> сізге пікір қалдырды",
+      "message_received": "<b>{sender}</b> хабарлама жіберді",
+      "lot_invite_received": "Сіз «<b>{lot}</b>» жабық лотына шақырылдыңыз"
+    }
+  },
+  "feed": {
+    "title": "Лента",
+    "subtitle": "Верификацияланған қатысушылардың кейстері, тауарлары мен жаңалықтары",
+    "createCta": "Жариялау",
+    "empty": "Лента бос",
+    "filters": { "all": "Барлығы" }
+  },
+  "posts": {
+    "type": {
+      "case": "Кейс",
+      "product": "Тауар",
+      "news": "Жаңалық",
+      "media": "Медиа"
+    },
+    "card": { "openPost": "Жарияланымды ашу" },
+    "interactions": { "like": "Ұнайды", "save": "Сақтау" },
+    "form": {
+      "pageTitle": "Жаңа жарияланым",
+      "pageSubtitle": "Кейспен, тауармен немесе жаңалықпен бөлісіңіз",
+      "typeLabel": "Жарияланым түрі",
+      "types": {
+        "case": { "label": "Кейс", "hint": "Орындалған жоба" },
+        "product": { "label": "Тауар", "hint": "Не сатасыз" },
+        "news": { "label": "Жаңалық", "hint": "Компания өмірінен" },
+        "media": { "label": "Медиа", "hint": "Фото немесе видео контент" }
+      },
+      "titleLabel": "Тақырып",
+      "bodyLabel": "Сипаттама",
+      "bodyHint": "5000 таңбаға дейін",
+      "imagesLabel": "Суреттер",
+      "imagesHint": "5 файлға дейін: PNG, JPG, WEBP. Әрқайсысы 10 МБ-қа дейін.",
+      "categoryLabel": "Санат",
+      "categoryPlaceholder": "Санатсыз",
+      "regionLabel": "Аймақ",
+      "priceLabel": "Баға",
+      "priceHint": "Теңгемен",
+      "priceMaxLabel": "«Дейін» бағасы",
+      "priceMaxHint": "Егер баға диапазоны болса",
+      "linkedLotLabel": "Байланысты лот",
+      "linkedLotHint": "Кейс нақты тендерге қатысты болса лоттың ID",
+      "submitCta": "Жариялау",
+      "notVerifiedBanner": "Тек верификацияланған аккаунт жариялай алады",
+      "verifyCta": "Верификациядан өту",
+      "errors": {
+        "unauthorized": "Аккаунтқа кіріңіз",
+        "notVerified": "Тек верификацияланған пайдаланушылар жариялай алады",
+        "typeInvalid": "Жарияланым түрін таңдаңыз",
+        "titleInvalid": "Тақырып: 5–200 таңба",
+        "bodyTooLong": "Сипаттама тым ұзын (макс. 5000 таңба)",
+        "tooManyImages": "5 суреттен көп болмауы керек",
+        "imageTooLarge": "Сурет 10 МБ-тан үлкен",
+        "imageInvalidType": "Тек PNG, JPG, WEBP",
+        "imageUploadFailed": "Сурет жүктелмеді",
+        "priceInvalid": "Баға оң болуы керек",
+        "priceConsistency": "«Дейін» бағасы негізгіден кем болмауы керек",
+        "createFailed": "Жарияланым жасалмады"
+      }
+    },
+    "detail": {
+      "backToFeed": "Лента",
+      "writeAuthor": "Авторға жазу",
+      "priceSection": "Баға",
+      "linkedLot": "Лот:"
+    }
+  },
+  "messages": {
+    "list": {
+      "title": "Хабарламалар",
+      "subtitle": "Тапсырыс берушілер мен мердігерлермен диалогтар",
+      "empty": "Әзірге диалогтар жоқ",
+      "noMessages": "Хабарламалар жоқ",
+      "contextLot": "Лот бойынша: {title}",
+      "contextPost": "Жарияланым бойынша: {title}"
+    },
+    "thread": {
+      "title": "Диалог",
+      "backToList": "Барлық диалогтар",
+      "contextLot": "Лот",
+      "contextPost": "Жарияланым"
+    },
+    "form": {
+      "placeholder": "Хабарлама жазыңыз…",
+      "hint": "Enter — жіберу, Shift+Enter — жаңа жол",
+      "sendCta": "Жіберу",
+      "errors": {
+        "no_conversation": "Диалог табылмады",
+        "body_invalid": "Хабарлама 1-ден 4000 таңбаға дейін",
+        "unauthorized": "Аккаунтқа кіріңіз",
+        "send_failed": "Жіберілмеді"
+      }
+    }
+  },
+  "lotInvites": {
+    "picker": {
+      "openCta": "Өз лотыма шақыру",
+      "title": "{name} өзіңіздің жабық лотыңызға шақыру",
+      "inviteCta": "Шақыру",
+      "errors": {
+        "missing_params": "Деректер жетіспейді",
+        "unauthorized": "Авторизацияланбаған",
+        "already_invited": "Бұл лотқа шақырылған"
+      }
+    },
+    "banner": {
+      "pending": "Сіз бұл жабық лотқа шақырылдыңыз. Сауда-саттыққа қатысу үшін шақыруды қабылдаңыз.",
+      "accepted": "✓ Сіз шақыруды қабылдадыңыз және ұсыныс бере аласыз",
+      "accept": "Қабылдау",
+      "decline": "Бас тарту"
+    }
+  },
+  "locale": {
+    "switchTo": "Тілді ауыстыру",
+    "ru": "Русский",
+    "kk": "Қазақша"
+  }
+}

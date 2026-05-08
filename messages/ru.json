@@ -1,0 +1,574 @@
+{
+  "common": {
+    "appName": "Doda",
+    "tagline": "Тендеры и обратные аукционы для B2B Казахстана"
+  },
+  "nav": {
+    "lots": "Лоты",
+    "categories": "Категории",
+    "feed": "Лента",
+    "messages": "Сообщения",
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "createLot": "Создать лот",
+    "account": "Личный кабинет",
+    "deals": "Сделки"
+  },
+  "footer": {
+    "company": "Компания",
+    "legal": "Юридическая информация",
+    "support": "Поддержка",
+    "about": "О платформе",
+    "contacts": "Контакты",
+    "termsOfUse": "Пользовательское соглашение",
+    "privacyPolicy": "Политика конфиденциальности",
+    "publicOffer": "Публичная оферта",
+    "personalDataConsent": "Согласие на обработку ПД",
+    "tendersRules": "Регламент проведения торгов",
+    "disputeResolution": "Регламент разрешения споров",
+    "help": "Помощь",
+    "rights": "Все права защищены"
+  },
+  "home": {
+    "hero": {
+      "title": "Закупки и тендеры для B2B Казахстана",
+      "subtitle": "Опубликуйте лот за минуту, получите ставки от верифицированных подрядчиков, выберите лучшего по цене и репутации.",
+      "ctaCustomer": "Создать лот",
+      "ctaContractor": "Найти заказы"
+    },
+    "features": {
+      "transparency": {
+        "title": "Полная прозрачность",
+        "body": "У каждого подрядчика — публичная история ставок, сделок и отзывов. Никаких скрытых рейтингов."
+      },
+      "realtime": {
+        "title": "Аукцион в реальном времени",
+        "body": "Ставки обновляются мгновенно. Anti-sniping продлевает дедлайн при поздних ставках."
+      },
+      "verification": {
+        "title": "Верификация ИП и ТОО",
+        "body": "Создавать лоты и подавать ставки могут только проверенные участники с УДЛ и БИН."
+      }
+    }
+  },
+  "auth": {
+    "signInTitle": "Вход",
+    "signInSubtitle": "Войдите в аккаунт чтобы продолжить",
+    "signInCta": "Войти",
+    "signUpTitle": "Регистрация",
+    "signUpSubtitle": "Создайте аккаунт за минуту",
+    "signUpCta": "Создать аккаунт",
+    "forgotPasswordTitle": "Восстановление доступа",
+    "forgotPasswordSubtitle": "Введите email — пришлём ссылку для смены пароля",
+    "forgotPasswordHint": "Если такой email зарегистрирован, ссылка придёт в течение минуты",
+    "forgotPasswordLink": "Забыли пароль?",
+    "sendResetLinkCta": "Отправить ссылку",
+    "resetPasswordTitle": "Новый пароль",
+    "resetPasswordSubtitle": "Задайте новый пароль для входа",
+    "newPasswordLabel": "Новый пароль",
+    "confirmPasswordLabel": "Повторите пароль",
+    "updatePasswordCta": "Сохранить",
+    "checkEmailTitle": "Проверьте почту",
+    "checkEmailBody": "Мы отправили письмо с подтверждением регистрации. Перейдите по ссылке в письме чтобы активировать аккаунт.",
+    "emailLabel": "Email",
+    "passwordLabel": "Пароль",
+    "passwordHint": "Минимум 8 символов",
+    "displayNameLabel": "Имя или название компании",
+    "displayNameHint": "Будет видно другим участникам",
+    "haveAccount": "Уже есть аккаунт? Войти",
+    "noAccount": "Нет аккаунта?",
+    "backToSignIn": "Назад ко входу",
+    "signOut": "Выйти",
+    "legalAgreement": "Регистрируясь, вы принимаете <terms>пользовательское соглашение</terms> и <privacy>политику конфиденциальности</privacy>",
+    "errors": {
+      "missingFields": "Заполните все обязательные поля",
+      "invalidEmail": "Некорректный email",
+      "invalidCredentials": "Неверный email или пароль",
+      "emailNotConfirmed": "Email не подтверждён. Проверьте почту",
+      "emailTaken": "Этот email уже зарегистрирован",
+      "passwordTooShort": "Пароль должен быть минимум 8 символов",
+      "passwordWeak": "Пароль слишком простой",
+      "passwordMismatch": "Пароли не совпадают",
+      "displayNameTooLong": "Имя слишком длинное",
+      "rateLimit": "Слишком много попыток. Попробуйте позже",
+      "sessionExpired": "Сессия истекла. Запросите ссылку заново",
+      "unknown": "Что-то пошло не так. Попробуйте позже"
+    },
+    "messages": {
+      "passwordResetSent": "Если такой email зарегистрирован, мы отправили ссылку для восстановления пароля"
+    }
+  },
+  "account": {
+    "pageTitle": "Личный кабинет",
+    "pageSubtitle": "Управление профилем и настройками",
+    "viewPublic": "Открыть публичный профиль",
+    "securityLink": "Безопасность",
+    "profileSection": "Профиль",
+    "displayNameLabel": "Имя или название компании",
+    "slugLabel": "Адрес профиля",
+    "slugHint": "От 2 до 32 символов: латиница, цифры, дефисы. Используется в публичной ссылке /u/...",
+    "cityLabel": "Город",
+    "bioLabel": "О себе",
+    "bioHint": "До 1000 символов. Расскажите чем занимаетесь",
+    "preferredLocaleLabel": "Язык по умолчанию",
+    "saveCta": "Сохранить",
+    "saved": "Изменения сохранены",
+    "avatar": {
+      "title": "Аватар",
+      "hint": "PNG, JPG, WEBP или GIF. До 5 МБ",
+      "chooseFile": "Загрузить файл",
+      "uploaded": "Аватар обновлён",
+      "errors": {
+        "unauthorized": "Войдите чтобы изменить аватар",
+        "noFile": "Файл не выбран",
+        "fileTooLarge": "Файл больше 5 МБ",
+        "invalidFileType": "Поддерживаются только PNG, JPG, WEBP, GIF",
+        "uploadFailed": "Не удалось загрузить файл",
+        "unknown": "Что-то пошло не так"
+      }
+    },
+    "errors": {
+      "unauthorized": "Войдите в аккаунт",
+      "displayNameInvalid": "Укажите имя (до 80 символов)",
+      "slugInvalid": "Адрес: от 2 до 32 символов, латиница, цифры, дефисы",
+      "slugTaken": "Этот адрес уже занят",
+      "bioTooLong": "О себе слишком длинное (макс. 1000 символов)",
+      "cityTooLong": "Город слишком длинный",
+      "localeInvalid": "Неподдерживаемый язык",
+      "unknown": "Не удалось сохранить. Попробуйте позже"
+    }
+  },
+  "verification": {
+    "pageTitle": "Верификация ИП/ТОО",
+    "pageSubtitle": "Подтвердите статус юридического лица — это разблокирует создание лотов и подачу ставок.",
+    "submitCta": "Отправить на проверку",
+    "entityTypeLabel": "Тип организации",
+    "entityTypePlaceholder": "Выберите тип",
+    "entityTypeHint": "Индивидуальный предприниматель или ТОО",
+    "entityTypeIP": "Индивидуальный предприниматель",
+    "entityTypeTOO": "ТОО",
+    "legalNameLabel": "Юридическое наименование",
+    "legalNameHint": "Полное название как в свидетельстве о регистрации",
+    "binLabel": "БИН/ИИН",
+    "binHint": "12 цифр без пробелов",
+    "documentsLabel": "Сканы документов",
+    "documentsHint": "Скан УДЛ, для ТОО — также свидетельство о регистрации. PDF, PNG, JPG, WEBP. До 10 МБ каждый, до 5 файлов.",
+    "status": {
+      "approved": "✓ Аккаунт верифицирован. Вы можете создавать лоты и подавать ставки.",
+      "pending": "Заявка на проверке. Обычно занимает 1-2 рабочих дня.",
+      "rejected": "Заявка отклонена. Подайте заново с исправлениями."
+    },
+    "banner": {
+      "notVerified": "Аккаунт не верифицирован — некоторые действия недоступны",
+      "pending": "Заявка на верификацию рассматривается",
+      "startCta": "Пройти верификацию"
+    },
+    "errors": {
+      "unauthorized": "Войдите в аккаунт",
+      "entityTypeInvalid": "Выберите тип организации",
+      "legalNameInvalid": "Юридическое наименование: 2–200 символов",
+      "binInvalid": "БИН должен содержать ровно 12 цифр",
+      "noDocuments": "Прикрепите хотя бы один документ",
+      "tooManyDocuments": "Не более 5 файлов",
+      "fileTooLarge": "Файл больше 10 МБ",
+      "invalidFileType": "Допустимы PDF, PNG, JPG, WEBP",
+      "uploadFailed": "Не удалось загрузить документ",
+      "alreadySubmitted": "У вас уже есть активная заявка",
+      "binBlacklisted": "Этот БИН/ИИН в чёрном списке. Свяжитесь с поддержкой.",
+      "unknown": "Что-то пошло не так"
+    }
+  },
+  "security": {
+    "pageTitle": "Безопасность",
+    "pageSubtitle": "2FA и сессии",
+    "mfa": {
+      "title": "Двухфакторная аутентификация",
+      "subtitle": "Защитите аккаунт через TOTP-приложение (Google Authenticator, 1Password, Bitwarden и т.д.)",
+      "addFactor": "Добавить TOTP",
+      "scanQrTitle": "Отсканируйте QR-код",
+      "scanQrHint": "Откройте приложение-аутентификатор и отсканируйте код. После этого введите 6-значный код из приложения.",
+      "manualSecret": "Или введите секрет вручную:",
+      "codeLabel": "Код из приложения",
+      "codeHint": "6 цифр",
+      "verifyCta": "Подтвердить",
+      "cancel": "Отмена",
+      "remove": "Удалить",
+      "verified": "Подтверждён",
+      "unverified": "Ожидает подтверждения",
+      "enrolled": "✓ TOTP подключён",
+      "unenrolled": "TOTP отключён"
+    }
+  },
+  "categories": {
+    "title": "Категории",
+    "subtitle": "Разделы платформы по типу закупок"
+  },
+  "lots": {
+    "backToCatalog": "Все лоты",
+    "backToCategories": "Все категории",
+    "status": {
+      "draft": "Черновик",
+      "open": "Открыт",
+      "closing": "Закрывается",
+      "closed": "Закрыт",
+      "cancelled": "Отменён"
+    },
+    "deadline": {
+      "ended": "Завершён",
+      "daysHours": "{days} дн {hours} ч",
+      "hoursMinutes": "{hours} ч {minutes} мин",
+      "minutesSeconds": "{minutes}:{seconds, number, ::00}",
+      "seconds": "{seconds} сек"
+    },
+    "card": {
+      "bidsCount": "{count, plural, =0 {Ставок нет} one {# ставка} few {# ставки} many {# ставок} other {# ставок}}",
+      "bestBid": "Лучшая:",
+      "startingPrice": "Стартовая:",
+      "deadline": "Дедлайн:"
+    },
+    "filters": {
+      "category": "Категория",
+      "allCategories": "Все категории",
+      "region": "Регион",
+      "regionPlaceholder": "Например: Астана",
+      "status": "Статус",
+      "statusActive": "Активные"
+    },
+    "catalog": {
+      "title": "Лоты",
+      "subtitle": "Открытые тендеры от заказчиков",
+      "createCta": "Создать лот",
+      "empty": "По выбранным фильтрам лотов нет",
+      "lotsInCategory": "{count, plural, =0 {Лотов нет} one {# лот} few {# лота} many {# лотов} other {# лотов}}"
+    },
+    "form": {
+      "pageTitle": "Новый лот",
+      "pageSubtitle": "Опишите что нужно закупить, выберите категорию и дедлайн приёма ставок",
+      "titleLabel": "Заголовок лота",
+      "titleHint": "Кратко: что закупаете. От 5 до 200 символов",
+      "descriptionLabel": "Описание",
+      "descriptionHint": "Спецификации, объём, требования. От 20 до 5000 символов",
+      "categoryLabel": "Категория",
+      "categoryPlaceholder": "Выберите категорию",
+      "regionLabel": "Регион поставки",
+      "regionHint": "Город или область",
+      "deadlineLabel": "Дедлайн приёма ставок",
+      "deadlineHint": "Минимум 5 минут от текущего времени",
+      "startingPriceLabel": "Стартовая цена",
+      "startingPriceHint": "Опционально, в тенге",
+      "maxPriceLabel": "Максимальная цена",
+      "maxPriceHint": "Опционально, в тенге",
+      "isPrivateLabel": "Видимость",
+      "isPrivateHint": "Закрытые лоты видны только приглашённым подрядчикам",
+      "isPrivateInline": "Закрытый лот (по приглашениям)",
+      "submitCta": "Опубликовать",
+      "notVerifiedBanner": "Создание лотов доступно только верифицированным аккаунтам",
+      "verifyCta": "Пройти верификацию",
+      "errors": {
+        "unauthorized": "Войдите в аккаунт",
+        "notVerified": "Создавать лоты могут только верифицированные пользователи",
+        "titleInvalid": "Заголовок: от 5 до 200 символов",
+        "descriptionInvalid": "Описание: от 20 до 5000 символов",
+        "categoryRequired": "Выберите категорию",
+        "regionInvalid": "Регион: от 2 до 100 символов",
+        "deadlineInvalid": "Некорректный дедлайн",
+        "deadlineTooSoon": "Дедлайн должен быть минимум через 5 минут",
+        "priceInvalid": "Цена должна быть положительным числом",
+        "priceConsistency": "Максимальная цена не может быть меньше стартовой",
+        "createFailed": "Не удалось создать лот"
+      }
+    },
+    "detail": {
+      "privateBadge": "Закрытый",
+      "descriptionSection": "Описание",
+      "bidsSection": "Ставки",
+      "bidsCount": "{count, plural, =0 {ставок нет} one {# ставка} few {# ставки} many {# ставок} other {# ставок}}",
+      "deadlineLabel": "До конца",
+      "startingPrice": "Стартовая:",
+      "maxPrice": "Максимум:",
+      "bidFormTitle": "Подать ставку",
+      "signInToBid": "Войдите чтобы подать ставку",
+      "verifyToBid": "Пройдите верификацию чтобы подавать ставки",
+      "biddingEnded": "Приём ставок завершён",
+      "ownerControls": "Управление лотом",
+      "selectWinnerHint": "Выберите ставку-победителя из списка ниже",
+      "winnerSelected": "Победитель выбран",
+      "askQuestion": "Задать вопрос"
+    },
+    "actions": {
+      "close": "Закрыть приём ставок",
+      "selectWinner": "Выбрать победителя",
+      "errors": {
+        "unauthorized": "Не авторизовано",
+        "lot_not_found": "Лот не найден",
+        "lot_not_open": "Приём ставок уже закрыт",
+        "lot_not_closed": "Сначала закройте приём ставок",
+        "not_owner": "Только владелец лота может это сделать",
+        "winner_already_selected": "Победитель уже выбран",
+        "bid_not_found": "Ставка не найдена",
+        "bid_lot_mismatch": "Ставка относится к другому лоту",
+        "missing_params": "Не хватает параметров"
+      }
+    }
+  },
+  "bids": {
+    "form": {
+      "amountLabel": "Ваша ставка, ₸",
+      "amountHint": "Максимально допустимо: {max}. Минимальный шаг: {step}",
+      "amountHintFirst": "Это будет первая ставка по этому лоту",
+      "submitCta": "Подать ставку",
+      "updateCta": "Изменить ставку",
+      "yourCurrentBid": "Ваша текущая ставка",
+      "changesLeft": "{count, plural, =0 {изменений больше нет} one {осталось # изменение} few {осталось # изменения} many {осталось # изменений} other {осталось # изменений}}",
+      "changesExhausted": "Лимит из 3-х изменений ставки исчерпан",
+      "success": "Ставка принята",
+      "errors": {
+        "unauthorized": "Войдите в аккаунт",
+        "not_verified": "Подавать ставки могут только верифицированные подрядчики",
+        "lot_not_found": "Лот не найден",
+        "lot_not_open": "Приём ставок закрыт",
+        "lot_expired": "Дедлайн уже прошёл",
+        "owner_cannot_bid": "Владелец лота не может подавать ставки",
+        "invalid_amount": "Сумма должна быть больше нуля",
+        "amount_above_max": "Сумма выше максимальной цены лота",
+        "amount_above_starting": "Первая ставка не может быть выше стартовой цены",
+        "step_too_small": "Слишком маленький шаг — нужно опуститься ниже текущего лидера на минимальный шаг",
+        "max_changes_reached": "Лимит из 3-х изменений ставки исчерпан",
+        "amount_unchanged": "Сумма не изменилась",
+        "unknown": "Что-то пошло не так"
+      }
+    },
+    "list": {
+      "empty": "Ставок ещё нет — будьте первым",
+      "anonymous": "Аноним",
+      "yours": "Это вы",
+      "winner": "Победитель",
+      "changesCount": "{count, plural, one {# изменение} few {# изменения} many {# изменений} other {# изменений}}"
+    }
+  },
+  "profile": {
+    "verified": "Верифицирован",
+    "memberSince": "На платформе с {date}",
+    "reviewsSection": "Отзывы",
+    "reviewsEmpty": "Отзывов ещё нет. Они появляются после закрытых сделок.",
+    "postsSection": "Публикации",
+    "history": {
+      "title": "История участия в лотах",
+      "empty": "Пользователь ещё не участвовал в торгах. Здесь появятся ставки и сделки.",
+      "won": "Выиграл",
+      "placedAt": "Подано {date}",
+      "changes": "{count, plural, one {# изменение} few {# изменения} many {# изменений} other {# изменений}}"
+    }
+  },
+  "deals": {
+    "roleCustomer": "Заказчик",
+    "roleContractor": "Подрядчик",
+    "status": {
+      "proposed": "Предложение принято",
+      "contracted": "Договор подписан",
+      "paid": "Оплачено",
+      "delivered": "Поставлено",
+      "closed": "Завершено",
+      "cancelled": "Отменено"
+    },
+    "card": {
+      "role": "{role}",
+      "asCustomer": "Я заказчик",
+      "asContractor": "Я подрядчик"
+    },
+    "list": {
+      "title": "Мои сделки",
+      "subtitle": "Все сделки в которых вы участвуете",
+      "empty": "Пока нет сделок. Они появятся когда вы выберете победителя или станете победителем."
+    },
+    "detail": {
+      "title": "Сделка",
+      "backToLot": "К лоту",
+      "statusSection": "Статус сделки",
+      "actionsSection": "Действия",
+      "reviewsSection": "Отзывы по сделке",
+      "cancelReason": "Причина отмены"
+    },
+    "actions": {
+      "advance": {
+        "contracted": "Договор подписан",
+        "paid": "Оплата получена",
+        "delivered": "Поставка/работа выполнена",
+        "closed": "Закрыть сделку"
+      },
+      "cancelOpen": "Отменить сделку",
+      "cancelConfirm": "Подтвердить отмену",
+      "cancelDismiss": "Не отменять",
+      "cancelReasonPlaceholder": "Причина отмены (опционально, до 500 символов)",
+      "errors": {
+        "unauthorized": "Не авторизовано",
+        "deal_not_found": "Сделка не найдена",
+        "not_a_participant": "Вы не участник этой сделки",
+        "invalid_transition": "Этот переход статуса недопустим",
+        "deal_already_finalized": "Сделка уже завершена",
+        "missing_params": "Не хватает параметров",
+        "unknown": "Что-то пошло не так"
+      }
+    }
+  },
+  "reviews": {
+    "form": {
+      "title": "Оставьте отзыв о {name}",
+      "subtitle": "Ваш отзыв публичный и помогает другим участникам платформы",
+      "ratingLabel": "Оценка",
+      "commentLabel": "Комментарий",
+      "commentHint": "До 1000 символов. Что было хорошо, что можно улучшить.",
+      "submitCta": "Опубликовать отзыв",
+      "success": "Спасибо! Отзыв опубликован.",
+      "errors": {
+        "missing_params": "Не хватает данных",
+        "rating_invalid": "Поставьте оценку от 1 до 5",
+        "comment_too_long": "Комментарий слишком длинный",
+        "unauthorized": "Войдите в аккаунт",
+        "already_reviewed": "Вы уже оставили отзыв по этой сделке",
+        "deal_not_closed": "Отзыв доступен только после закрытия сделки",
+        "unknown": "Что-то пошло не так"
+      }
+    },
+    "summary": {
+      "rating": "Рейтинг",
+      "ofReviews": "{count, plural, =0 {нет отзывов} one {# отзыв} few {# отзыва} many {# отзывов} other {# отзывов}}",
+      "noReviews": "Нет отзывов",
+      "totalDeals": "Сделки",
+      "split": "{customer} как заказчик / {contractor} как подрядчик",
+      "completed": "Закрыто",
+      "percentage": "{pct}% от всех",
+      "cancelled": "Отменено"
+    }
+  },
+  "notifications": {
+    "pageTitle": "Уведомления",
+    "pageSubtitle": "Все события по вашим лотам, ставкам и сделкам",
+    "empty": "Уведомлений пока нет",
+    "markAllRead": "Отметить всё прочитанным",
+    "bellAria": "Уведомления",
+    "item": {
+      "lot_bid_placed": "<b>{bidder}</b> подал ставку <b>{amount}</b> на ваш лот «{lot}»",
+      "lot_winner_selected": "Вы выбраны победителем лота «<b>{lot}</b>»",
+      "deal_status_changed": "Статус сделки по «{lot}» изменён на <b>{status}</b>",
+      "review_received": "<b>{reviewer}</b> оставил вам отзыв",
+      "message_received": "<b>{sender}</b> прислал сообщение",
+      "lot_invite_received": "Вас пригласили в закрытый лот «<b>{lot}</b>»"
+    }
+  },
+  "feed": {
+    "title": "Лента",
+    "subtitle": "Кейсы, товары и новости верифицированных участников",
+    "createCta": "Создать публикацию",
+    "empty": "В ленте пока пусто",
+    "filters": { "all": "Все" }
+  },
+  "posts": {
+    "type": {
+      "case": "Кейс",
+      "product": "Товар",
+      "news": "Новость",
+      "media": "Медиа"
+    },
+    "card": { "openPost": "Открыть публикацию" },
+    "interactions": { "like": "Нравится", "save": "Сохранить" },
+    "form": {
+      "pageTitle": "Новая публикация",
+      "pageSubtitle": "Поделитесь кейсом, товаром или новостью",
+      "typeLabel": "Тип публикации",
+      "types": {
+        "case": { "label": "Кейс", "hint": "Реализованный проект" },
+        "product": { "label": "Товар", "hint": "Что вы продаёте" },
+        "news": { "label": "Новость", "hint": "Из жизни компании" },
+        "media": { "label": "Медиа", "hint": "Фото или видео контент" }
+      },
+      "titleLabel": "Заголовок",
+      "bodyLabel": "Описание",
+      "bodyHint": "До 5000 символов",
+      "imagesLabel": "Изображения",
+      "imagesHint": "До 5 файлов: PNG, JPG, WEBP. До 10 МБ каждый.",
+      "categoryLabel": "Категория",
+      "categoryPlaceholder": "Без категории",
+      "regionLabel": "Регион",
+      "priceLabel": "Цена",
+      "priceHint": "В тенге",
+      "priceMaxLabel": "Цена «до»",
+      "priceMaxHint": "Если ценник вилкой",
+      "linkedLotLabel": "Связанный лот",
+      "linkedLotHint": "ID лота если кейс по конкретному тендеру",
+      "submitCta": "Опубликовать",
+      "notVerifiedBanner": "Публиковать может только верифицированный аккаунт",
+      "verifyCta": "Пройти верификацию",
+      "errors": {
+        "unauthorized": "Войдите в аккаунт",
+        "notVerified": "Только верифицированные пользователи могут публиковать",
+        "typeInvalid": "Выберите тип публикации",
+        "titleInvalid": "Заголовок: 5–200 символов",
+        "bodyTooLong": "Описание слишком длинное (макс. 5000 символов)",
+        "tooManyImages": "Не более 5 изображений",
+        "imageTooLarge": "Изображение больше 10 МБ",
+        "imageInvalidType": "Только PNG, JPG, WEBP",
+        "imageUploadFailed": "Не удалось загрузить изображение",
+        "priceInvalid": "Цена должна быть положительной",
+        "priceConsistency": "«Цена до» не может быть меньше основной цены",
+        "createFailed": "Не удалось создать публикацию"
+      }
+    },
+    "detail": {
+      "backToFeed": "Лента",
+      "writeAuthor": "Написать автору",
+      "priceSection": "Цена",
+      "linkedLot": "По лоту:"
+    }
+  },
+  "messages": {
+    "list": {
+      "title": "Сообщения",
+      "subtitle": "Диалоги с заказчиками и подрядчиками",
+      "empty": "Диалогов пока нет",
+      "noMessages": "Нет сообщений",
+      "contextLot": "По лоту: {title}",
+      "contextPost": "По публикации: {title}"
+    },
+    "thread": {
+      "title": "Диалог",
+      "backToList": "Все диалоги",
+      "contextLot": "Лот",
+      "contextPost": "Публикация"
+    },
+    "form": {
+      "placeholder": "Напишите сообщение…",
+      "hint": "Enter — отправить, Shift+Enter — новая строка",
+      "sendCta": "Отправить",
+      "errors": {
+        "no_conversation": "Диалог не найден",
+        "body_invalid": "Сообщение от 1 до 4000 символов",
+        "unauthorized": "Войдите в аккаунт",
+        "send_failed": "Не удалось отправить"
+      }
+    }
+  },
+  "lotInvites": {
+    "picker": {
+      "openCta": "Пригласить в свой лот",
+      "title": "Пригласить {name} в свой закрытый лот",
+      "inviteCta": "Пригласить",
+      "errors": {
+        "missing_params": "Не хватает данных",
+        "unauthorized": "Не авторизовано",
+        "already_invited": "Уже приглашён в этот лот"
+      }
+    },
+    "banner": {
+      "pending": "Вас пригласили на этот закрытый лот. Примите приглашение чтобы участвовать в торгах.",
+      "accepted": "✓ Вы приняли приглашение и можете подавать ставки",
+      "accept": "Принять",
+      "decline": "Отклонить"
+    }
+  },
+  "locale": {
+    "switchTo": "Сменить язык",
+    "ru": "Русский",
+    "kk": "Қазақша"
+  }
+}

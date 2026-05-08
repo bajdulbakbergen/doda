@@ -6,7 +6,32 @@
       "mcp__claude_ai_Supabase__get_cost",
       "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --turbopack --yes)",
       "mcp__claude_ai_Supabase__confirm_cost",
-      "mcp__claude_ai_Supabase__create_project"
+      "mcp__claude_ai_Supabase__create_project",
+      "mcp__claude_ai_Supabase__get_project_url",
+      "mcp__claude_ai_Supabase__get_publishable_keys",
+      "Bash(npm install *)",
+      "Bash(grep -E '\\\\.\\(js|d\\\\.ts\\)$|^\\\\w+$')",
+      "Bash(grep -A 10 \"i18n\\\\|locale\\\\|\\\\\\\\[locale\\\\\\\\]\" \"C:/Users/User/Desktop/doda/node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/layout.md\")",
+      "mcp__claude_ai_Supabase__apply_migration",
+      "mcp__claude_ai_Supabase__generate_typescript_types",
+      "mcp__claude_ai_Supabase__get_advisors",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | %{time_total}s | %{size_download} bytes\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | %{time_total}s | KK locale\\\\n\" http://localhost:3000/kk)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(grep -oE '\\(Doda|Тендеры|hero|verification\\)[^<]{0,80}')",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | %{time_total}s\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | %{time_total}s\\\\n\" http://localhost:3001/kk)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | %{time_total}s\\\\n\" http://localhost:3001/auth/sign-in)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | %{time_total}s\\\\n\" http://localhost:3001/kk/auth/sign-up)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | %{time_total}s\\\\n\" http://localhost:3001/auth/forgot-password)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/u/nobody-here)",
+      "Bash(curl -sI http://localhost:3001/auth/callback)",
+      "Bash(powershell -Command 'Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }')",
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "Bash(git add *)"
     ]
   }
 }
