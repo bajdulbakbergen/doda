@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/shared/lib/cn";
+import { recordCookieConsentAction } from "../actions/record-cookie-consent";
 
 const STORAGE_KEY = "doda-cookie-consent";
 const TTL_DAYS = 365;
@@ -33,6 +34,11 @@ function saveChoice(choice: CookieChoice) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(choice));
   window.dispatchEvent(new CustomEvent("doda:cookie-consent-changed", { detail: choice }));
+  // server-side фиксация для авторизованных. Анонимам - только localStorage.
+  void recordCookieConsentAction({
+    functional: choice.functional,
+    analytics: choice.analytics,
+  }).catch(() => {});
 }
 
 export function CookieConsentBanner() {

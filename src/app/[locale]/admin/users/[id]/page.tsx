@@ -66,6 +66,7 @@ export default async function AdminUserDetailPage({ params }: Props) {
                 <th className="px-3 py-2 text-left font-medium">Принят</th>
                 <th className="px-3 py-2 text-left font-medium">Источник</th>
                 <th className="px-3 py-2 text-left font-medium">IP</th>
+                <th className="px-3 py-2 text-left font-medium">User-Agent</th>
               </tr>
             </thead>
             <tbody className="divide-foreground/5 divide-y">
@@ -89,6 +90,12 @@ export default async function AdminUserDetailPage({ params }: Props) {
                   <td className="text-foreground/55 px-3 py-2 text-xs">{c.source}</td>
                   <td className="text-foreground/55 px-3 py-2 font-mono text-xs">
                     {c.ip ?? "-"}
+                  </td>
+                  <td
+                    className="text-foreground/55 max-w-[280px] truncate px-3 py-2 font-mono text-[10px]"
+                    title={c.user_agent ?? ""}
+                  >
+                    {c.user_agent ?? "-"}
                   </td>
                 </tr>
               ))}

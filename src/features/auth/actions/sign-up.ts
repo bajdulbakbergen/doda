@@ -37,13 +37,28 @@ export async function signUpAction(
   const proto = headerList.get("x-forwarded-proto") ?? "http";
   const baseUrl = origin?.startsWith("http") ? origin : origin ? `${proto}://${origin}` : "";
 
-  const { data, error } = await supabase.auth.signUp({
+  const ip =
+    headerList.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    headerList.get("x-real-ip") ??
+    null;
+  const userAgent = headerList.get("user-agent") ?? null;
+
+  // Согласия идут в user_metadata - триггер 0020 атомарно запишет их в user_consents.
+  const signupConsents = REGISTRABLE_CONSENTS.map((slug) => ({
+    slug,
+    version: getConsentVersion(slug),
+  }));
+
+  const { error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       emailRedirectTo: `${baseUrl}/auth/callback?next=/account`,
       data: {
         display_name: displayName || email.split("@")[0],
+        signup_consents: signupConsents,
+        signup_ip: ip,
+        signup_user_agent: userAgent,
       },
     },
   });
@@ -51,25 +66,6 @@ export async function signUpAction(
   if (error) {
     console.error("[signUp] Supabase auth error:", error.message, error);
     return { status: "error", errorKey: mapAuthError(error.message) };
-  }
-
-  // Фиксируем согласия в журнале (доказательная база)
-  // record_signup_consent - SECURITY DEFINER функция с grace-window 10 минут от создания auth.users.
-  const userId = data.user?.id;
-  if (userId) {
-    for (const slug of REGISTRABLE_CONSENTS) {
-      const version = getConsentVersion(slug);
-      const { error: consentError } = await supabase.rpc("record_signup_consent", {
-        p_user_id: userId,
-        p_document_slug: slug,
-        p_document_version: version,
-      });
-      if (consentError) {
-        console.error("[signUp] consent record failed:", slug, consentError.message);
-        // не блокируем регистрацию - согласие зафиксировано на UI, в худшем случае
-        // зарегистрируем повторно из callback
-      }
-    }
   }
 
   const locale = await getLocale();

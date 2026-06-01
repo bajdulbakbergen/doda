@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/shared/ui/button";
+import { Pagination } from "@/shared/components/ui/pagination";
 import { LotCard } from "@/features/lots/components/lot-card";
 import { LotFilters } from "@/features/lots/components/lot-filters";
 import { getLots } from "@/features/lots/queries/get-lots";
@@ -15,6 +16,7 @@ type Props = {
     category?: string;
     region?: string;
     status?: string;
+    page?: string;
   }>;
 };
 
@@ -31,8 +33,9 @@ export default async function LotsCatalogPage({ params, searchParams }: Props) {
   setRequestLocale(locale);
   const search = await searchParams;
   const t = await getTranslations({ locale, namespace: "lots" });
+  const pageNum = Math.max(1, Number(search.page) || 1);
 
-  const [categories, lots, profile] = await Promise.all([
+  const [categories, paged, profile] = await Promise.all([
     getCategories(),
     getLots({
       categorySlug: search.category,
@@ -40,6 +43,7 @@ export default async function LotsCatalogPage({ params, searchParams }: Props) {
       status: VALID_STATUSES.has(search.status ?? "")
         ? (search.status as Database["public"]["Enums"]["lot_status"])
         : undefined,
+      page: pageNum,
     }),
     getCurrentProfile(),
   ]);
@@ -68,16 +72,28 @@ export default async function LotsCatalogPage({ params, searchParams }: Props) {
         />
       </div>
 
-      {lots.length === 0 ? (
+      {paged.lots.length === 0 ? (
         <div className="border-foreground/10 bg-foreground/[0.02] rounded-2xl border p-12 text-center">
           <p className="text-foreground/60">{t("catalog.empty")}</p>
         </div>
       ) : (
-        <div className="grid gap-3">
-          {lots.map((lot) => (
-            <LotCard key={lot.id} lot={lot} locale={locale} />
-          ))}
-        </div>
+        <>
+          <div className="grid gap-3">
+            {paged.lots.map((lot) => (
+              <LotCard key={lot.id} lot={lot} locale={locale} />
+            ))}
+          </div>
+          <Pagination
+            pathname="/lots"
+            searchParams={{
+              category: search.category,
+              region: search.region,
+              status: search.status,
+            }}
+            page={paged.page}
+            totalPages={paged.totalPages}
+          />
+        </>
       )}
     </div>
   );

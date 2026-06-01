@@ -3,7 +3,12 @@ import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { VerificationReviewForm } from "@/features/admin/components/verification-review-form";
 
-export const metadata: Metadata = { title: "Admin · Верификации", robots: { index: false, follow: false } };
+export const metadata: Metadata = {
+  title: "Admin · Верификации",
+  robots: { index: false, follow: false },
+};
+
+const SIGNED_URL_TTL_SECONDS = 60 * 60; // 1 hour
 
 export default async function AdminVerificationsPage() {
   const supabase = await createClient();
@@ -14,6 +19,21 @@ export default async function AdminVerificationsPage() {
     )
     .eq("status", "pending")
     .order("submitted_at", { ascending: true });
+
+  // Подписываем URL-ы документов параллельно одним батчем.
+  const allPaths: string[] = [];
+  for (const v of pending ?? []) {
+    if (Array.isArray(v.document_paths)) allPaths.push(...(v.document_paths as string[]));
+  }
+  const signedByPath = new Map<string, string>();
+  if (allPaths.length > 0) {
+    const { data: signed } = await supabase.storage
+      .from("verification-docs")
+      .createSignedUrls(allPaths, SIGNED_URL_TTL_SECONDS);
+    for (const s of signed ?? []) {
+      if (s.path && s.signedUrl) signedByPath.set(s.path, s.signedUrl);
+    }
+  }
 
   return (
     <div>
@@ -32,6 +52,7 @@ export default async function AdminVerificationsPage() {
               slug: string;
               display_name: string;
             } | null;
+            const paths = (v.document_paths as string[]) ?? [];
             return (
               <div
                 key={v.id}
@@ -61,11 +82,35 @@ export default async function AdminVerificationsPage() {
                       Подано {new Date(v.submitted_at).toLocaleString("ru-RU")}
                     </div>
                   </div>
-                  {v.document_paths.length > 0 ? (
-                    <div className="text-foreground/65 text-xs">
-                      Документы: {v.document_paths.length} файл(а/ов)
-                      <div className="text-foreground/40 mt-0.5 text-[10px]">
-                        (открываются через приватный bucket, Studio → Storage → verification-docs)
+                  {paths.length > 0 ? (
+                    <div className="text-foreground/65 max-w-xs space-y-1 text-xs">
+                      <div className="text-foreground/55 mb-1 uppercase tracking-wider text-[10px]">
+                        Документы ({paths.length})
+                      </div>
+                      <ul className="space-y-1">
+                        {paths.map((path, i) => {
+                          const url = signedByPath.get(path);
+                          const filename = path.split("/").pop() ?? path;
+                          return (
+                            <li key={i}>
+                              {url ? (
+                                <a
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-foreground hover:underline"
+                                >
+                                  📎 {filename}
+                                </a>
+                              ) : (
+                                <span className="text-foreground/40">📎 {filename} (не доступен)</span>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      <div className="text-foreground/40 text-[10px]">
+                        Ссылки действительны {SIGNED_URL_TTL_SECONDS / 60} мин
                       </div>
                     </div>
                   ) : null}

@@ -8,6 +8,7 @@ import { FormField } from "@/shared/ui/form-field";
 import { Input } from "@/shared/ui/input";
 import { Link } from "@/i18n/navigation";
 import { signInAction } from "../actions/sign-in";
+import { verifyMfaAction } from "../actions/verify-mfa";
 import { idleState } from "../types";
 
 type Props = {
@@ -17,6 +18,44 @@ type Props = {
 export function SignInForm({ next }: Props) {
   const t = useTranslations("auth");
   const [state, formAction, pending] = useActionState(signInAction, idleState);
+  const [mfaState, mfaAction, mfaPending] = useActionState(verifyMfaAction, idleState);
+
+  if (state.status === "mfa_required") {
+    return (
+      <form action={mfaAction} className="space-y-5">
+        <input type="hidden" name="factorId" value={state.factorId} />
+        <input type="hidden" name="challengeId" value={state.challengeId} />
+        <input type="hidden" name="next" value={state.next} />
+
+        <div className="space-y-1">
+          <h2 className="text-base font-semibold">{t("mfaPromptTitle")}</h2>
+          <p className="text-foreground/65 text-sm">{t("mfaPromptHint")}</p>
+        </div>
+
+        <FormField label={t("mfaCodeLabel")} htmlFor="code">
+          <Input
+            id="code"
+            name="code"
+            type="text"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            pattern="\d{6}"
+            maxLength={6}
+            required
+            autoFocus
+          />
+        </FormField>
+
+        {mfaState.status === "error" ? (
+          <Alert variant="error">{t(`errors.${mfaState.errorKey}`)}</Alert>
+        ) : null}
+
+        <Button type="submit" isLoading={mfaPending} className="w-full">
+          {t("mfaVerifyCta")}
+        </Button>
+      </form>
+    );
+  }
 
   return (
     <form action={formAction} className="space-y-5">

@@ -5,6 +5,12 @@
 export type AuthFormState =
   | { status: "idle" }
   | { status: "error"; errorKey: string }
-  | { status: "success"; messageKey?: string };
+  | { status: "success"; messageKey?: string }
+  | {
+      status: "mfa_required";
+      factorId: string;
+      challengeId: string;
+      next: string;
+    };
 
 export const idleState: AuthFormState = { status: "idle" };

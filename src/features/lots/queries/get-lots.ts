@@ -16,10 +16,26 @@ export type LotFilters = {
   categorySlug?: string;
   region?: string;
   status?: Database["public"]["Enums"]["lot_status"];
+  page?: number;
+  pageSize?: number;
 };
 
-export const getLots = cache(async (filters: LotFilters = {}): Promise<LotWithMeta[]> => {
+export type PagedLots = {
+  lots: LotWithMeta[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+};
+
+const DEFAULT_PAGE_SIZE = 20;
+
+export const getLots = cache(async (filters: LotFilters = {}): Promise<PagedLots> => {
   const supabase = await createClient();
+  const page = Math.max(1, filters.page ?? 1);
+  const pageSize = Math.min(50, Math.max(1, filters.pageSize ?? DEFAULT_PAGE_SIZE));
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
 
   let query = supabase
     .from("lots")
@@ -28,10 +44,11 @@ export const getLots = cache(async (filters: LotFilters = {}): Promise<LotWithMe
        category:categories!lots_category_id_fkey(slug, name_ru, name_kk),
        owner:profiles!lots_owner_id_fkey(slug, display_name, avatar_url, is_verified),
        bids(amount, is_active)`,
+      { count: "exact" },
     )
     .eq("is_private", false)
     .order("deadline_at", { ascending: true })
-    .limit(50);
+    .range(from, to);
 
   if (filters.status) {
     query = query.eq("status", filters.status);
@@ -49,14 +66,16 @@ export const getLots = cache(async (filters: LotFilters = {}): Promise<LotWithMe
       .select("id")
       .eq("slug", filters.categorySlug)
       .maybeSingle();
-    if (!cat) return [];
+    if (!cat) {
+      return { lots: [], total: 0, page, pageSize, totalPages: 0 };
+    }
     query = query.eq("category_id", cat.id);
   }
 
-  const { data, error } = await query;
-  if (error || !data) return [];
+  const { data, error, count } = await query;
+  if (error || !data) return { lots: [], total: 0, page, pageSize, totalPages: 0 };
 
-  return data.map((row) => {
+  const lots = data.map((row) => {
     const rawBids = row.bids as Array<{ amount: number; is_active: boolean }> | null;
     const activeBids = (rawBids ?? []).filter((b) => b.is_active);
     const lowest = activeBids.length
@@ -70,4 +89,13 @@ export const getLots = cache(async (filters: LotFilters = {}): Promise<LotWithMe
       lowest_bid: lowest,
     };
   });
+
+  const total = count ?? 0;
+  return {
+    lots,
+    total,
+    page,
+    pageSize,
+    totalPages: Math.ceil(total / pageSize),
+  };
 });

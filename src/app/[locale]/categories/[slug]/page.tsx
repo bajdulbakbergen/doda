@@ -27,10 +27,11 @@ export default async function CategoryPage({ params }: Props) {
   const cat = await getCategoryBySlug(slug);
   if (!cat) notFound();
 
-  const [lots, t] = await Promise.all([
+  const [paged, t] = await Promise.all([
     getLots({ categorySlug: slug }),
     getTranslations({ locale, namespace: "lots" }),
   ]);
+  const lots = paged.lots;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-6 py-12">
@@ -45,7 +46,7 @@ export default async function CategoryPage({ params }: Props) {
           {localizedCategoryName(cat, locale)}
         </h1>
         <p className="text-foreground/60 text-sm">
-          {t("catalog.lotsInCategory", { count: lots.length })}
+          {t("catalog.lotsInCategory", { count: paged.total })}
         </p>
       </header>
 

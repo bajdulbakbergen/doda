@@ -32,6 +32,31 @@ export async function signInAction(
     return { status: "error", errorKey: "unknown" };
   }
 
+  // MFA step-up: если у пользователя есть верифицированный TOTP-фактор,
+  // signInWithPassword даёт сессию aal1, но nextLevel требует aal2.
+  // Тогда не редиректим - возвращаем factorId+challengeId, форма докручивает TOTP-кодом.
+  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+  if (aal && aal.nextLevel === "aal2" && aal.currentLevel === "aal1") {
+    const { data: factors } = await supabase.auth.mfa.listFactors();
+    const totp = factors?.totp?.find((f) => f.status === "verified");
+    if (totp) {
+      const { data: challenge, error: chErr } = await supabase.auth.mfa.challenge({
+        factorId: totp.id,
+      });
+      if (chErr || !challenge) {
+        console.error("[signIn] mfa.challenge failed:", chErr?.message);
+        return { status: "error", errorKey: "unknown" };
+      }
+      const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/";
+      return {
+        status: "mfa_required",
+        factorId: totp.id,
+        challengeId: challenge.id,
+        next: safeNext,
+      };
+    }
+  }
+
   const locale = await getLocale();
   // Защита от open redirect - допускаем только относительные пути.
   const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/";

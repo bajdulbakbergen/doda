@@ -67,6 +67,12 @@ export function LotFilters({
           disabled={pending}
           placeholder={t("filters.regionPlaceholder")}
           onBlur={(e) => update("region", e.target.value.trim())}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              update("region", (e.target as HTMLInputElement).value.trim());
+            }
+          }}
           className="border-foreground/15 bg-background h-10 w-full rounded-xl border px-3 text-sm"
         />
       </div>

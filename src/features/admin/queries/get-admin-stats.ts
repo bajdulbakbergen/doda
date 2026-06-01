@@ -66,22 +66,50 @@ export type AdminUserRow = {
   email: string | null;
 };
 
-export async function getAdminUsers(): Promise<AdminUserRow[]> {
+export type AdminUsersFilters = {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+};
+
+export type AdminUsersPage = {
+  rows: AdminUserRow[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+};
+
+const ADMIN_USERS_PAGE_SIZE = 50;
+
+export async function getAdminUsers(filters: AdminUsersFilters = {}): Promise<AdminUsersPage> {
   const supabase = await createClient();
-  const { data } = await supabase
+  const page = Math.max(1, filters.page ?? 1);
+  const pageSize = Math.min(100, Math.max(1, filters.pageSize ?? ADMIN_USERS_PAGE_SIZE));
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
+  const search = filters.search?.trim();
+
+  let query = supabase
     .from("profiles")
-    .select(`id, display_name, slug, is_verified, is_admin, created_at,
-             user_consents(document_slug)`)
+    .select(
+      `id, display_name, slug, is_verified, is_admin, created_at,
+       user_consents(document_slug)`,
+      { count: "exact" },
+    )
     .order("created_at", { ascending: false })
-    .limit(200);
+    .range(from, to);
 
-  if (!data) return [];
+  if (search) {
+    query = query.or(`display_name.ilike.%${search}%,slug.ilike.%${search}%`);
+  }
 
-  // Email из auth.users недоступен через PostgREST для безопасности;
-  // получаем через отдельный запрос (для админ-view).
-  // В Supabase JS можно использовать admin.listUsers только с service_role,
-  // поэтому здесь email = null. Для production добавить server endpoint c service_role.
-  return data.map((p) => ({
+  const { data, count } = await query;
+  if (!data) {
+    return { rows: [], total: 0, page, pageSize, totalPages: 0 };
+  }
+
+  const rows: AdminUserRow[] = data.map((p) => ({
     id: p.id,
     display_name: p.display_name,
     slug: p.slug,
@@ -91,6 +119,15 @@ export async function getAdminUsers(): Promise<AdminUserRow[]> {
     email: null,
     consents_count: Array.isArray(p.user_consents) ? p.user_consents.length : 0,
   }));
+
+  const total = count ?? 0;
+  return {
+    rows,
+    total,
+    page,
+    pageSize,
+    totalPages: Math.ceil(total / pageSize),
+  };
 }
 
 export type AdminUserDetail = {
@@ -111,6 +148,7 @@ export type AdminUserDetail = {
     accepted_at: string;
     source: string;
     ip: string | null;
+    user_agent: string | null;
   }>;
   verifications: Array<{
     id: string;
@@ -144,7 +182,7 @@ export async function getAdminUserDetail(userId: string): Promise<AdminUserDetai
     supabase.from("profiles").select("*").eq("id", userId).maybeSingle(),
     supabase
       .from("user_consents")
-      .select("document_slug, document_version, accepted_at, source, ip")
+      .select("document_slug, document_version, accepted_at, source, ip, user_agent")
       .eq("user_id", userId)
       .order("accepted_at", { ascending: false }),
     supabase
