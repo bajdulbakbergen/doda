@@ -27,8 +27,11 @@ export async function Header() {
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-4 px-4 sm:gap-6 sm:px-6">
-        <Link href="/" className="text-base font-semibold tracking-tight">
+        <Link href="/" className="flex items-center gap-2 text-base font-semibold tracking-tight">
           {siteConfig.name}
+          <span className="inline-flex items-center rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-amber-900 dark:bg-amber-950 dark:text-amber-200">
+            Beta
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-5 text-sm md:flex">
@@ -52,6 +55,14 @@ export async function Header() {
                 </Link>
               ))
             : null}
+          {profile?.is_admin ? (
+            <Link
+              href="/admin"
+              className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900 transition-opacity hover:opacity-80 dark:bg-amber-950 dark:text-amber-200"
+            >
+              ★ Admin
+            </Link>
+          ) : null}
         </nav>
 
         <div className="ml-auto flex items-center gap-1 sm:gap-2">

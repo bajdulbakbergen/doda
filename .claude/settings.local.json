@@ -38,7 +38,8 @@
       "Bash(git push *)",
       "mcp__claude_ai_Supabase__list_projects",
       "Bash(git commit --allow-empty -m ' *)",
-      "Bash(grep -E \"doda\\\\\\\\\\\\\\\\src\")"
+      "Bash(grep -E \"doda\\\\\\\\\\\\\\\\src\")",
+      "WebSearch"
     ]
   }
 }

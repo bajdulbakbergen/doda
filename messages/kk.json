@@ -86,7 +86,37 @@
     "tendersRules": "Сауда-саттық регламенті",
     "disputeResolution": "Дауларды шешу регламенті",
     "help": "Көмек",
-    "rights": "Барлық құқықтар қорғалған"
+    "rights": "Барлық құқықтар қорғалған",
+    "contentRules": "Контент жариялау ережелері",
+    "cookies": "Cookie Policy",
+    "pdRegistry": "ДД операторлары тізілімі"
+  },
+  "cookies": {
+    "banner": {
+      "title": "Біз cookies пайдаланамыз",
+      "body": "Қажетті cookies сайттың жұмысы үшін қажет. Толық ақпарат — <policy>Cookie Policy</policy>.",
+      "acceptAll": "Барлығын қабылдау",
+      "acceptNecessary": "Тек қажетті",
+      "settings": "Баптау",
+      "settingsTitle": "Cookies баптаулары",
+      "settingsHint": "Пайдалануға рұқсат беретін санаттарды таңдаңыз.",
+      "save": "Сақтау",
+      "back": "Артқа",
+      "cats": {
+        "necessary": {
+          "title": "Қажетті",
+          "desc": "Аутентификация, тіл таңдауы, баптауларды сақтау үшін қажет."
+        },
+        "functional": {
+          "title": "Функционалды",
+          "desc": "Пайдаланушы қалауларын есте сақтайды."
+        },
+        "analytics": {
+          "title": "Аналитикалық",
+          "desc": "Сайтты жақсартуға көмектеседі. PostHog (ЕО) мен Sentry-ге беріледі."
+        }
+      }
+    }
   },
   "home": {
     "hero": {
@@ -281,6 +311,8 @@
     "backToSignIn": "Кіруге қайту",
     "signOut": "Шығу",
     "legalAgreement": "Тіркелу арқылы сіз <terms>пайдаланушы келісімімен</terms> және <privacy>құпиялық саясатымен</privacy> келісесіз",
+    "consentTerms": "Мен <terms>Пайдаланушы келісімімен</terms> және <offer>Жария офертамен</offer> таныстым және қабылдаймын",
+    "consentPersonalData": "Мен <consent>Дербес деректерді өңдеуге келісім</consent> беремін <privacy>Құпиялық саясатына</privacy> сәйкес",
     "errors": {
       "missingFields": "Барлық міндетті өрістерді толтырыңыз",
       "invalidEmail": "Email қате",
@@ -293,6 +325,7 @@
       "displayNameTooLong": "Аты тым ұзын",
       "rateLimit": "Тым көп әрекет. Кейінірек көріңіз",
       "sessionExpired": "Сессия аяқталды. Сілтемені қайта сұраңыз",
+      "consentsRequired": "Тіркелу үшін екі келісімді де қабылдау керек",
       "unknown": "Қате орын алды. Кейінірек көріңіз"
     },
     "messages": {
@@ -337,6 +370,32 @@
       "cityTooLong": "Қала аты тым ұзын",
       "localeInvalid": "Қолдау табылмайтын тіл",
       "unknown": "Сақтау сәтсіз. Кейінірек көріңіз"
+    },
+    "privacy": {
+      "pageTitle": "Құпиялық және деректер",
+      "pageSubtitle": "Дербес деректеріңізді басқару",
+      "backToAccount": "Кабинетке",
+      "exportTitle": "Деректерді экспорттау",
+      "exportBody": "Барлық дербес деректеріңіз бар JSON файлды жүктеп алыңыз.",
+      "exportCta": "Деректерімді жүктеу",
+      "deleteTitle": "Аккаунтты жою",
+      "deleteBody": "Жою сұранысы 30 күн ішінде өңделеді. Бұл кезеңде сұранысты болдырмауға болады.",
+      "deleteCta": "Жоюды сұрау",
+      "deleteConfirmCta": "Растау",
+      "confirmLabel": "Растау",
+      "confirmHint": "Растау үшін УДАЛИТЬ деген сөзді бас әріптермен жазыңыз",
+      "reasonLabel": "Себеп (міндетті емес)",
+      "reasonHint": "Сервисті жақсартуға көмектеседі",
+      "cancel": "Болдырмау",
+      "deletionScheduled": "Жою сұранысы қабылданды. Аккаунт <strong>{date}</strong> жойылады.",
+      "cancelDeletion": "Жою сұранысын болдырмау",
+      "consentsHistory": "Келісімдер тарихы",
+      "noConsents": "Келісімдер жоқ.",
+      "errors": {
+        "confirmMismatch": "Растау үшін УДАЛИТЬ деген сөзді бас әріптермен жазыңыз",
+        "unauthorized": "Аккаунтқа кіріңіз",
+        "unknown": "Сұраныс өңделмеді"
+      }
     }
   },
   "verification": {

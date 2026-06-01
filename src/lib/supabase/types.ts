@@ -677,6 +677,7 @@ export type Database = {
           created_at: string;
           display_name: string;
           id: string;
+          is_admin: boolean;
           is_verified: boolean;
           preferred_locale: string;
           slug: string;
@@ -689,6 +690,7 @@ export type Database = {
           created_at?: string;
           display_name: string;
           id: string;
+          is_admin?: boolean;
           is_verified?: boolean;
           preferred_locale?: string;
           slug: string;
@@ -701,10 +703,68 @@ export type Database = {
           created_at?: string;
           display_name?: string;
           id?: string;
+          is_admin?: boolean;
           is_verified?: boolean;
           preferred_locale?: string;
           slug?: string;
           updated_at?: string;
+        };
+        Relationships: [];
+      };
+      user_consents: {
+        Row: {
+          accepted_at: string;
+          document_slug: string;
+          document_version: string;
+          id: string;
+          ip: string | null;
+          source: string;
+          user_agent: string | null;
+          user_id: string;
+        };
+        Insert: {
+          accepted_at?: string;
+          document_slug: string;
+          document_version: string;
+          id?: string;
+          ip?: string | null;
+          source?: string;
+          user_agent?: string | null;
+          user_id: string;
+        };
+        Update: {
+          accepted_at?: string;
+          document_slug?: string;
+          document_version?: string;
+          id?: string;
+          ip?: string | null;
+          source?: string;
+          user_agent?: string | null;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      account_deletion_requests: {
+        Row: {
+          cancelled_at: string | null;
+          reason: string | null;
+          requested_at: string;
+          scheduled_for: string;
+          user_id: string;
+        };
+        Insert: {
+          cancelled_at?: string | null;
+          reason?: string | null;
+          requested_at?: string;
+          scheduled_for?: string;
+          user_id: string;
+        };
+        Update: {
+          cancelled_at?: string | null;
+          reason?: string | null;
+          requested_at?: string;
+          scheduled_for?: string;
+          user_id?: string;
         };
         Relationships: [];
       };
@@ -822,8 +882,16 @@ export type Database = {
         Args: { p_lot_id: string };
         Returns: Database["public"]["Tables"]["lots"]["Row"];
       };
+      current_user_is_admin: {
+        Args: Record<string, never>;
+        Returns: boolean;
+      };
       mark_conversation_read: {
         Args: { p_conversation_id: string };
+        Returns: undefined;
+      };
+      record_signup_consent: {
+        Args: { p_user_id: string; p_document_slug: string; p_document_version: string };
         Returns: undefined;
       };
       mark_notifications_read: {

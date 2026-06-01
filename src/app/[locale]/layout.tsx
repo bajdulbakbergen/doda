@@ -11,6 +11,7 @@ import { BottomNav } from "@/shared/components/layout/bottom-nav";
 import { PostHogProvider } from "@/shared/components/analytics/posthog-provider";
 import { ServiceWorkerRegister } from "@/shared/components/pwa/service-worker-register";
 import { InstallPrompt } from "@/shared/components/pwa/install-prompt";
+import { CookieConsentBanner } from "@/features/legal/components/cookie-consent-banner";
 import { getCurrentProfile } from "@/features/profile/queries/get-profile";
 import "../globals.css";
 
@@ -24,9 +25,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-// Все страницы под [locale] рендерим per-request: Header читает сессию через
-// cookies(), protected routes делают redirect() при отсутствии профиля.
-// Без этого build падает на prerender /ru/account, /ru/messages и т.д.
 export const dynamic = "force-dynamic";
 
 export const viewport: Viewport = {
@@ -50,9 +48,7 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: siteConfig.name,
   },
-  formatDetection: {
-    telephone: false,
-  },
+  formatDetection: { telephone: false },
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -87,6 +83,7 @@ export default async function LocaleLayout({
             <main className="flex-1">{children}</main>
             <Footer />
             <BottomNav isAuthenticated={!!profile} />
+            <CookieConsentBanner />
             <InstallPrompt />
             <ServiceWorkerRegister />
           </PostHogProvider>

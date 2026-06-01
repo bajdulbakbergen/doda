@@ -19,7 +19,6 @@
 }
 
 html {
-  /* Размер шрифта — фикс под mobile zoom on input focus */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -29,20 +28,16 @@ body {
   font-feature-settings:
     "rlig" 1,
     "calt" 1;
-  /* Отключить tap highlight на iOS — у нас свои hover-стейты */
   -webkit-tap-highlight-color: transparent;
-  /* Smooth scroll */
   scroll-behavior: smooth;
 }
 
-/* Минимум 16px на input/textarea/select — иначе iOS зумит при фокусе */
 input,
 textarea,
 select {
   font-size: max(16px, 1em);
 }
 
-/* Утилитарный класс для elements с safe-area-inset (notch) */
 .safe-area-inset-top {
   padding-top: env(safe-area-inset-top);
 }
@@ -50,9 +45,62 @@ select {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* Когда приложение запущено как PWA (display-mode: standalone) — прячем элементы which only make sense in browser */
 @media (display-mode: standalone) {
   .hide-in-app {
     display: none !important;
+  }
+}
+
+/* Типографика юр. документов */
+.legal-prose h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+.legal-prose h2:first-child {
+  margin-top: 0;
+}
+.legal-prose h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+.legal-prose p + p {
+  margin-top: 0.75rem;
+}
+.legal-prose ul,
+.legal-prose ol {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+.legal-prose ul {
+  list-style: disc;
+}
+.legal-prose ol {
+  list-style: decimal;
+}
+.legal-prose li + li {
+  margin-top: 0.35rem;
+}
+.legal-prose a {
+  color: rgb(5 150 105);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal-prose strong {
+  font-weight: 600;
+}
+.legal-prose code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+@media (prefers-color-scheme: dark) {
+  .legal-prose code {
+    background: rgba(255, 255, 255, 0.08);
   }
 }
