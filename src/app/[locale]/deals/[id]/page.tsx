@@ -108,7 +108,11 @@ export default async function DealDetailPage({ params }: Props) {
       {isParticipant && deal.status !== "closed" && deal.status !== "cancelled" ? (
         <section className="border-foreground/10 bg-foreground/[0.02] mb-8 rounded-2xl border p-5">
           <h2 className="mb-4 text-base font-semibold">{t("actionsSection")}</h2>
-          <DealActions dealId={deal.id} status={deal.status} />
+          <DealActions
+            dealId={deal.id}
+            status={deal.status}
+            role={isCustomer ? "customer" : "contractor"}
+          />
         </section>
       ) : null}
 

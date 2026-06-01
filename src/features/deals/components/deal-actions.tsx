@@ -10,7 +10,15 @@ import { cancelDealAction, cancelDealIdleState } from "../actions/cancel-deal";
 import type { Database } from "@/lib/supabase/types";
 
 type Status = Database["public"]["Enums"]["deal_status"];
+export type DealRole = "customer" | "contractor";
 
+/**
+ * Кто подтверждает каждый переход (принимающая сторона):
+ *   proposed  → contracted : customer (принимает условия)
+ *   contracted → paid      : contractor (получил деньги)
+ *   paid      → delivered  : customer (получил товар/услугу)
+ *   delivered → closed     : любой
+ */
 const NEXT_STATUS: Partial<Record<Status, Status>> = {
   proposed: "contracted",
   contracted: "paid",
@@ -18,12 +26,22 @@ const NEXT_STATUS: Partial<Record<Status, Status>> = {
   delivered: "closed",
 };
 
+function canAdvance(status: Status, role: DealRole): boolean {
+  if (status === "proposed") return role === "customer";
+  if (status === "contracted") return role === "contractor";
+  if (status === "paid") return role === "customer";
+  if (status === "delivered") return true;
+  return false;
+}
+
 export function DealActions({
   dealId,
   status,
+  role,
 }: {
   dealId: string;
   status: Status;
+  role: DealRole;
 }) {
   const next = NEXT_STATUS[status];
 
@@ -31,7 +49,11 @@ export function DealActions({
 
   return (
     <div className="space-y-4">
-      {next ? <AdvanceForm dealId={dealId} nextStatus={next} /> : null}
+      {next && canAdvance(status, role) ? (
+        <AdvanceForm dealId={dealId} nextStatus={next} />
+      ) : next ? (
+        <AwaitingOther status={status} role={role} />
+      ) : null}
       <CancelForm dealId={dealId} />
     </div>
   );
@@ -54,6 +76,21 @@ function AdvanceForm({ dealId, nextStatus }: { dealId: string; nextStatus: Statu
         </div>
       ) : null}
     </form>
+  );
+}
+
+function AwaitingOther({ status, role }: { status: Status; role: DealRole }) {
+  const t = useTranslations("deals.actions");
+  const otherRole = role === "customer" ? "contractor" : "customer";
+  return (
+    <div className="border-foreground/10 bg-foreground/[0.02] rounded-xl border p-3 text-sm">
+      <div className="text-foreground/55 text-xs font-medium uppercase tracking-wider">
+        {t("awaitingTitle")}
+      </div>
+      <div className="text-foreground/80 mt-1">
+        {t(`awaiting.${status}.${otherRole}`)}
+      </div>
+    </div>
   );
 }
 

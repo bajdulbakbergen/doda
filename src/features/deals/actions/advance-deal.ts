@@ -17,6 +17,8 @@ const KNOWN_ERRORS = new Set([
   "not_a_participant",
   "invalid_transition",
   "deal_already_finalized",
+  "only_customer_confirms",
+  "only_contractor_confirms",
 ]);
 
 export async function advanceDealAction(
