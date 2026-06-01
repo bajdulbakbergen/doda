@@ -213,6 +213,63 @@ npm run lint     # eslint
 npm run format   # prettier (после настройки)
 ```
 
+## PWA
+
+- Manifest: `src/app/manifest.ts` → отдаёт `/manifest.webmanifest`
+- Service Worker: `public/sw.js`, регистрация в `src/shared/components/pwa/service-worker-register.tsx` (только в production)
+- Install prompt: `src/shared/components/pwa/install-prompt.tsx` — перехват `beforeinstallprompt`, хранение dismissed-флага в localStorage (14 дней)
+- Offline-страница: `src/app/[locale]/offline/page.tsx` — fallback при отсутствии сети
+- Иконки SVG в `public/`: `icon.svg`, `icon-maskable.svg`, `apple-touch-icon.svg`
+- Bottom nav (только мобилка): `src/shared/components/layout/bottom-nav.tsx`
+- Web Share API: `src/shared/components/pwa/share-button.tsx` с fallback на clipboard
+- iOS meta: `appleWebApp` в `metadata`, viewport с `viewportFit: "cover"`, safe-area-inset через CSS env()
+
+### Перед production
+- Сгенерировать PNG иконки (192×192, 512×512, 512×512 maskable, 180×180 apple-touch) и заменить SVG ссылки в `manifest.ts` (некоторые краулеры/гайдлайны Play Store предпочитают PNG)
+- Проверить Lighthouse PWA score — должен быть 100/100 после PNG-иконок
+
+## TWA (Android приложение через Bubblewrap)
+
+PWA можно обернуть в Android приложение для Google Play Store без нативной разработки. Используем Trusted Web Activity.
+
+### Файлы в репо
+- `public/.well-known/assetlinks.json` — Digital Asset Links для верификации связи app↔домен
+- `twa-manifest.json` — конфиг для Bubblewrap CLI
+
+### Шаги сборки APK
+1. **Установить Bubblewrap CLI**: `npm i -g @bubblewrap/cli`
+2. **Установить Android SDK** (через Android Studio либо command-line tools)
+3. **Сгенерировать signing key**:
+   ```bash
+   keytool -genkey -v -keystore android.keystore -alias android \
+     -keyalg RSA -keysize 2048 -validity 10000
+   ```
+4. **Получить SHA-256 fingerprint**:
+   ```bash
+   keytool -list -v -keystore android.keystore -alias android
+   ```
+   Скопировать строку `SHA256:`
+5. **Заполнить `public/.well-known/assetlinks.json`** — вставить SHA-256 в `sha256_cert_fingerprints`
+6. **Заполнить `twa-manifest.json`** — заменить `REPLACE_WITH_YOUR_DOMAIN.vercel.app` на production домен (custom или *.vercel.app)
+7. **Задеплоить assetlinks.json** на production (через push в `main`)
+8. **Проверить Digital Asset Links**:
+   ```
+   https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://YOUR_DOMAIN&relation=delegate_permission/common.handle_all_urls
+   ```
+9. **Сгенерировать TWA проект**: `bubblewrap init --manifest=https://YOUR_DOMAIN/manifest.webmanifest` (или передать через `twa-manifest.json`)
+10. **Собрать APK**: `bubblewrap build` → создаст `app-release-signed.apk` и `app-release-bundle.aab`
+11. **Загрузить .aab в Google Play Console** → создать listing → review → publish
+
+### Что важно для Play Store
+- Иконки PNG (адаптивные/maskable) — без альфа-канала где надо
+- Privacy Policy URL обязательна
+- Screenshots приложения (минимум 2 для phone, 1 для tablet)
+- Описание ru + kk
+- Возрастной рейтинг (B2B → 3+)
+- `applicationId = kz.doda.app` (или другой обратно-доменный)
+
+## Что НЕ делать
+
 ## Supabase
 - Проект: `iynohjjeobqgxxklzvnc` (region: eu-central-1)
 - URL: `https://iynohjjeobqgxxklzvnc.supabase.co`

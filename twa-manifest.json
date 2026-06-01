@@ -1,0 +1,66 @@
+{
+  "$comment": "Bubblewrap конфиг для генерации TWA (Trusted Web Activity) — Android приложение-обёртка вокруг PWA. Заполните placeholders перед сборкой APK/AAB.",
+  "packageId": "kz.doda.app",
+  "host": "REPLACE_WITH_YOUR_DOMAIN.vercel.app",
+  "name": "Doda",
+  "launcherName": "Doda",
+  "display": "standalone",
+  "themeColor": "#0a0a0a",
+  "navigationColor": "#0a0a0a",
+  "navigationColorDark": "#0a0a0a",
+  "navigationDividerColor": "#0a0a0a",
+  "navigationDividerColorDark": "#0a0a0a",
+  "backgroundColor": "#ffffff",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "https://REPLACE_WITH_YOUR_DOMAIN.vercel.app/icon.svg",
+  "maskableIconUrl": "https://REPLACE_WITH_YOUR_DOMAIN.vercel.app/icon-maskable.svg",
+  "monochromeIconUrl": null,
+  "appVersionName": "1.0.0",
+  "appVersion": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Создать лот",
+      "shortName": "Новый лот",
+      "url": "/lots/new"
+    },
+    {
+      "name": "Каталог",
+      "shortName": "Лоты",
+      "url": "/lots"
+    },
+    {
+      "name": "Лента",
+      "shortName": "Лента",
+      "url": "/feed"
+    }
+  ],
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "android"
+  },
+  "orientation": "portrait",
+  "fingerprints": [],
+  "splashScreenFadeOutDuration": 300,
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": { "enabled": false },
+    "playBilling": { "enabled": false }
+  },
+  "alphaDependencies": { "enabled": false },
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appsFlyerConfig": null,
+  "rakutenAdvertisingConfig": null,
+  "oneSignalConfig": null,
+  "fullScopeUrl": "https://REPLACE_WITH_YOUR_DOMAIN.vercel.app/",
+  "minSdkVersion": 21,
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://REPLACE_WITH_YOUR_DOMAIN.vercel.app/manifest.webmanifest",
+  "fullStringResource": "",
+  "serviceAccountJsonFile": null
+}

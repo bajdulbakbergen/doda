@@ -7,18 +7,46 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: siteConfig.name,
     description: siteConfig.description,
     start_url: "/",
+    scope: "/",
     display: "standalone",
     orientation: "portrait",
     background_color: "#ffffff",
     theme_color: "#0a0a0a",
     lang: "ru",
-    categories: ["business", "productivity"],
-    // Иконки добавьте в /public/icon-{192,512}.png и раскомментируйте:
-    // icons: [
-    //   { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-    //   { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
-    //   { src: "/icon-maskable.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
-    // ],
-    icons: [],
+    dir: "ltr",
+    categories: ["business", "productivity", "finance"],
+    prefer_related_applications: false,
+    icons: [
+      {
+        src: "/icon.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+        purpose: "any",
+      },
+      {
+        src: "/icon-maskable.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+        purpose: "maskable",
+      },
+    ],
+    shortcuts: [
+      {
+        name: "Создать лот",
+        short_name: "Новый лот",
+        description: "Опубликовать новый тендер",
+        url: "/lots/new",
+      },
+      {
+        name: "Каталог лотов",
+        short_name: "Лоты",
+        url: "/lots",
+      },
+      {
+        name: "Лента",
+        short_name: "Лента",
+        url: "/feed",
+      },
+    ],
   };
 }

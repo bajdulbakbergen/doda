@@ -12,6 +12,7 @@ import { BidsListRealtime } from "@/features/bids/components/bids-list-realtime"
 import { BidForm } from "@/features/bids/components/bid-form";
 import { WriteButton } from "@/features/messages/components/write-button";
 import { InviteBanner } from "@/features/lot-invites/components/invite-banner";
+import { ShareButton } from "@/shared/components/pwa/share-button";
 import { getLotById } from "@/features/lots/queries/get-lot";
 import { getActiveBidsForLot } from "@/features/bids/queries/get-bids";
 import { getCurrentProfile } from "@/features/profile/queries/get-profile";
@@ -108,13 +109,16 @@ export default async function LotDetailPage({ params }: Props) {
               ) : null}
             </div>
           </Link>
-          {profile && !isOwner ? (
-            <WriteButton
-              otherUserId={lot.owner.id}
-              lotId={lot.id}
-              label={tDetail("askQuestion")}
-            />
-          ) : null}
+          <div className="flex items-center gap-2">
+            <ShareButton title={lot.title} url={`/lots/${lot.id}`} variant="icon" />
+            {profile && !isOwner ? (
+              <WriteButton
+                otherUserId={lot.owner.id}
+                lotId={lot.id}
+                label={tDetail("askQuestion")}
+              />
+            ) : null}
+          </div>
         </div>
 
         {myInvite ? (

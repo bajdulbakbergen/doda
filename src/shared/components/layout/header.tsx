@@ -22,8 +22,11 @@ export async function Header() {
   ];
 
   return (
-    <header className="border-foreground/10 bg-background/70 sticky top-0 z-40 border-b backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-6xl items-center gap-6 px-6">
+    <header
+      className="border-foreground/10 bg-background/85 sticky top-0 z-40 border-b backdrop-blur"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
+      <div className="mx-auto flex h-14 max-w-6xl items-center gap-4 px-4 sm:gap-6 sm:px-6">
         <Link href="/" className="text-base font-semibold tracking-tight">
           {siteConfig.name}
         </Link>
@@ -51,26 +54,31 @@ export async function Header() {
             : null}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
-          <LocaleSwitcher />
+        <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          <div className="hidden sm:block">
+            <LocaleSwitcher />
+          </div>
           {profile ? (
             <>
               <NotificationsBell userId={profile.id} />
               <Link
                 href="/lots/new"
-                className="bg-foreground text-background hover:bg-foreground/90 inline-flex h-9 items-center rounded-full px-4 text-sm font-medium transition-colors"
+                className="bg-foreground text-background hover:bg-foreground/90 inline-flex h-9 items-center rounded-full px-3 text-sm font-medium transition-colors sm:px-4"
               >
-                {t("createLot")}
+                <span className="hidden sm:inline">{t("createLot")}</span>
+                <span className="sm:hidden" aria-label={t("createLot")}>
+                  +
+                </span>
               </Link>
               <Link
                 href="/account"
-                className="hover:bg-foreground/5 -mr-2 inline-flex items-center gap-2 rounded-full p-1 pr-3 transition-colors"
+                className="hover:bg-foreground/5 -mr-1 hidden items-center gap-2 rounded-full p-1 transition-colors sm:inline-flex sm:pr-3"
                 aria-label={t("account")}
               >
                 <Avatar src={profile.avatar_url} alt={profile.display_name} size={28} />
-                <span className="hidden text-sm sm:inline">{profile.display_name}</span>
+                <span className="hidden text-sm md:inline">{profile.display_name}</span>
               </Link>
-              <SignOutButton className="hidden sm:inline-flex" />
+              <SignOutButton className="hidden md:inline-flex" />
             </>
           ) : (
             <>
