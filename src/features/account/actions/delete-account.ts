@@ -15,9 +15,12 @@ export async function requestAccountDeletionAction(
   formData: FormData,
 ): Promise<DeleteAccountState> {
   const confirm = String(formData.get("confirm") ?? "");
+  const expectedConfirm = String(formData.get("expectedConfirm") ?? "").trim();
   const reason = String(formData.get("reason") ?? "").trim();
 
-  if (confirm !== "УДАЛИТЬ") {
+  // Принимаем оба написания: RU («УДАЛИТЬ») и KK («ӨШІРУ»), плюс то что прислал клиент.
+  const acceptable = new Set(["УДАЛИТЬ", "ӨШІРУ", expectedConfirm].filter(Boolean));
+  if (!acceptable.has(confirm)) {
     return { status: "error", errorKey: "confirmMismatch" };
   }
 

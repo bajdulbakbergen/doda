@@ -7,6 +7,7 @@ export async function approveVerificationAction(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   const notes = String(formData.get("notes") ?? "").trim();
   if (!id) return { ok: false as const, error: "missing_id" };
+  if (!notes) return { ok: false as const, error: "notes_required" };
 
   const supabase = await createClient();
   const { error } = await supabase

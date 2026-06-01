@@ -3,12 +3,14 @@ import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { Avatar } from "@/shared/ui/avatar";
 import { getAdminUserDetail } from "@/features/admin/queries/get-admin-stats";
+import { requireAdmin } from "@/features/admin/queries/require-admin";
 
 export const metadata: Metadata = { title: "Admin · Профиль", robots: { index: false, follow: false } };
 
 type Props = { params: Promise<{ id: string }> };
 
 export default async function AdminUserDetailPage({ params }: Props) {
+  await requireAdmin(); // defense-in-depth: layout уже вызывает, но если страница рендерится отдельно - тоже проверяем
   const { id } = await params;
   const detail = await getAdminUserDetail(id);
   if (!detail) notFound();

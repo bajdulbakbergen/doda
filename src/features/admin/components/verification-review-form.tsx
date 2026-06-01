@@ -9,6 +9,11 @@ import {
   rejectVerificationAction,
 } from "../actions/review-verification";
 
+const ERROR_LABELS: Record<string, string> = {
+  notes_required: "Комментарий обязателен (для approve и reject)",
+  missing_id: "Не передан id заявки",
+};
+
 export function VerificationReviewForm({ verificationId }: { verificationId: string }) {
   const [notes, setNotes] = useState("");
   const [pending, startTransition] = useTransition();
@@ -21,7 +26,7 @@ export function VerificationReviewForm({ verificationId }: { verificationId: str
       fd.set("id", verificationId);
       fd.set("notes", notes);
       const res = await action(fd);
-      if (!res.ok) setError(res.error);
+      if (!res.ok) setError(ERROR_LABELS[res.error] ?? res.error);
     });
   }
 
@@ -30,7 +35,7 @@ export function VerificationReviewForm({ verificationId }: { verificationId: str
       <Textarea
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
-        placeholder="Комментарий ревьюера (для reject обязателен)"
+        placeholder="Комментарий ревьюера (обязателен)"
         rows={2}
         maxLength={500}
       />
@@ -39,6 +44,7 @@ export function VerificationReviewForm({ verificationId }: { verificationId: str
           type="button"
           size="sm"
           isLoading={pending}
+          disabled={!notes.trim()}
           onClick={() => submit(approveVerificationAction)}
         >
           ✓ Approve
@@ -48,6 +54,7 @@ export function VerificationReviewForm({ verificationId }: { verificationId: str
           size="sm"
           variant="danger"
           isLoading={pending}
+          disabled={!notes.trim()}
           onClick={() => submit(rejectVerificationAction)}
         >
           × Reject

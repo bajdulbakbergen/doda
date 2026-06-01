@@ -96,12 +96,14 @@ export function PrivacyControls({ existingDeletion }: Props) {
           </Alert>
         ) : showDeleteForm ? (
           <form action={formAction} className="border-foreground/15 space-y-3 rounded-xl border p-4">
+            <Alert variant="warning">{t("graceWarning")}</Alert>
+            <input type="hidden" name="expectedConfirm" value={t("confirmWord")} />
             <FormField
               label={t("confirmLabel")}
               htmlFor="confirm"
               hint={t("confirmHint")}
             >
-              <Input id="confirm" name="confirm" required pattern="УДАЛИТЬ" />
+              <Input id="confirm" name="confirm" required />
             </FormField>
             <FormField label={t("reasonLabel")} htmlFor="reason" hint={t("reasonHint")}>
               <Textarea id="reason" name="reason" rows={3} maxLength={500} />
