@@ -104,7 +104,7 @@ export function PostForm({ categories, locale }: Props) {
           htmlFor="linkedLotId"
           hint={t("linkedLotHint")}
         >
-          <Input id="linkedLotId" name="linkedLotId" placeholder="UUID лота" />
+          <Input id="linkedLotId" name="linkedLotId" placeholder={t("linkedLotPlaceholder")} />
         </FormField>
       ) : null}
 

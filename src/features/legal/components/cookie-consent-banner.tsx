@@ -32,6 +32,7 @@ function loadChoice(): CookieChoice | null {
 function saveChoice(choice: CookieChoice) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(choice));
+  window.dispatchEvent(new CustomEvent("doda:cookie-consent-changed", { detail: choice }));
 }
 
 export function CookieConsentBanner() {
@@ -43,6 +44,7 @@ export function CookieConsentBanner() {
 
   useEffect(() => {
     const existing = loadChoice();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!existing) setVisible(true);
   }, []);
 

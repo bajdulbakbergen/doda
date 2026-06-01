@@ -1,5 +1,6 @@
 import { operator } from "@/config/operator";
 import { LegalDocLayout } from "../components/legal-doc-layout";
+import { Link } from "@/i18n/navigation";
 
 export const disputesMeta = {
   slug: "disputes",
@@ -38,7 +39,7 @@ export function DisputesRu() {
         <li>жалобы на содержание постов и сообщений;</li>
         <li>обжалование действий модерации (снятие постов, блокировка Учётных записей);</li>
         <li>оспаривание отзывов, оставленных с нарушением{" "}
-          <a href="/legal/content-rules">Правил публикации контента</a>.
+          <Link href="/legal/content-rules">Правил публикации контента</Link>.
         </li>
       </ul>
       <p>

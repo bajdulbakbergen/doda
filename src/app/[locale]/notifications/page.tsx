@@ -5,7 +5,6 @@ import { NotificationItem } from "@/features/notifications/components/notificati
 import { MarkAllReadButton } from "@/features/notifications/components/mark-all-read-button";
 import { getNotifications } from "@/features/notifications/queries/get-notifications";
 import { getCurrentProfile } from "@/features/profile/queries/get-profile";
-import { createClient } from "@/lib/supabase/server";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -28,13 +27,6 @@ export default async function NotificationsPage({ params }: Props) {
     getNotifications(),
     getTranslations({ locale, namespace: "notifications" }),
   ]);
-
-  // Помечаем все непрочитанные как прочитанные при заходе на страницу.
-  const hasUnread = notifications.some((n) => !n.read_at);
-  if (hasUnread) {
-    const supabase = await createClient();
-    await supabase.rpc("mark_notifications_read", { p_ids: undefined });
-  }
 
   return (
     <div className="mx-auto w-full max-w-2xl px-6 py-12">

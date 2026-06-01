@@ -1,5 +1,6 @@
 import { operator } from "@/config/operator";
 import { LegalDocLayout } from "../components/legal-doc-layout";
+import { Link } from "@/i18n/navigation";
 
 export const privacyMeta = {
   slug: "privacy",
@@ -121,10 +122,10 @@ export function PrivacyRu() {
       <p>Обработка ПД осуществляется на основании:</p>
       <ul>
         <li>согласия Субъекта ПД, выраженного при регистрации на Платформе (
-          <a href="/legal/personal-data">Согласие на обработку персональных данных</a>);
+          <Link href="/legal/personal-data">Согласие на обработку персональных данных</Link>);
         </li>
         <li>необходимости исполнения договора, стороной которого является Субъект ПД (
-          <a href="/legal/terms">Пользовательское соглашение</a>);
+          <Link href="/legal/terms">Пользовательское соглашение</Link>);
         </li>
         <li>обязательных требований законодательства Республики Казахстан.</li>
       </ul>
@@ -188,7 +189,7 @@ export function PrivacyRu() {
         чем установлен законодательством Республики Казахстан, либо обладают признанием
         Уполномоченного органа в части адекватности уровня защиты ПД. Согласие на
         трансграничную передачу Пользователь выражает при принятии{" "}
-        <a href="/legal/personal-data">Согласия на обработку ПД</a>.
+        <Link href="/legal/personal-data">Согласия на обработку ПД</Link>.
       </p>
 
       <h2>9. Сроки хранения данных</h2>
@@ -224,7 +225,7 @@ export function PrivacyRu() {
       <p>
         Платформа использует файлы cookies и аналогичные технологии. Подробная информация о
         видах cookies, целях их использования и порядке управления приведена в{" "}
-        <a href="/legal/cookies">Cookie Policy</a>.
+        <Link href="/legal/cookies">Cookie Policy</Link>.
       </p>
 
       <h2>12. Ваши права как Субъекта персональных данных</h2>

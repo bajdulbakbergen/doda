@@ -17,6 +17,7 @@ const KNOWN_ERRORS = new Set([
   "lot_expired",
   "owner_cannot_bid",
   "not_verified",
+  "lot_private_not_invited",
   "invalid_amount",
   "amount_above_max",
   "amount_above_starting",

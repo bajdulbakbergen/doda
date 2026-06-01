@@ -1,5 +1,6 @@
 import { operator } from "@/config/operator";
 import { LegalDocLayout } from "../components/legal-doc-layout";
+import { Link } from "@/i18n/navigation";
 
 export const personalDataMeta = {
   slug: "personal-data",
@@ -159,7 +160,7 @@ export function PersonalDataRu() {
       </p>
       <ul>
         <li>ознакомлен с {" "}
-          <a href="/legal/privacy">Политикой конфиденциальности</a> Оператора;
+          <Link href="/legal/privacy">Политикой конфиденциальности</Link> Оператора;
         </li>
         <li>уведомлён о своих правах, предусмотренных Законом о ПД, и порядке их реализации;</li>
         <li>достиг возраста полной гражданской дееспособности и осознаёт правовые последствия предоставления настоящего Согласия;</li>
@@ -274,7 +275,7 @@ export function PersonalDataKk() {
       <h2>11. Растау</h2>
       <p>
         Осы Келісімді қабылдау арқылы Субъект{" "}
-        <a href="/legal/privacy">Құпиялық саясатымен</a> таныс екенін, өз құқықтары туралы
+        <Link href="/legal/privacy">Құпиялық саясатымен</Link> таныс екенін, өз құқықтары туралы
         хабардар екенін, толық азаматтық әрекет қабілеттілігі жасына жеткенін растайды.
       </p>
 

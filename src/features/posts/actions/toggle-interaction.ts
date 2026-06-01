@@ -16,7 +16,7 @@ export async function toggleInteractionAction(
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, nowActive: false };
 
-  const { data: existing } = await supabase
+  const { data: existing, error: selectError } = await supabase
     .from("post_interactions")
     .select("user_id")
     .eq("user_id", user.id)
@@ -24,23 +24,36 @@ export async function toggleInteractionAction(
     .eq("type", type)
     .maybeSingle();
 
+  if (selectError) {
+    console.error("[toggleInteraction] select failed:", selectError.message);
+    return { ok: false, nowActive: false };
+  }
+
   if (existing) {
-    await supabase
+    const { error: deleteError } = await supabase
       .from("post_interactions")
       .delete()
       .eq("user_id", user.id)
       .eq("post_id", postId)
       .eq("type", type);
+    if (deleteError) {
+      console.error("[toggleInteraction] delete failed:", deleteError.message);
+      return { ok: false, nowActive: true };
+    }
     revalidatePath(`/posts/${postId}`);
     revalidatePath("/feed");
     return { ok: true, nowActive: false };
   }
 
-  await supabase.from("post_interactions").insert({
+  const { error: insertError } = await supabase.from("post_interactions").insert({
     user_id: user.id,
     post_id: postId,
     type,
   });
+  if (insertError) {
+    console.error("[toggleInteraction] insert failed:", insertError.message);
+    return { ok: false, nowActive: false };
+  }
 
   revalidatePath(`/posts/${postId}`);
   revalidatePath("/feed");

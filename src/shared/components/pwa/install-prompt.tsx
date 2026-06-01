@@ -20,6 +20,7 @@ export function InstallPrompt() {
     if (typeof window === "undefined") return;
     const dismissed = window.localStorage.getItem(DISMISSED_KEY);
     if (dismissed && Date.now() - Number(dismissed) < DISMISS_TTL_MS) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHidden(true);
       return;
     }
