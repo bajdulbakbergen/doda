@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * Регистрирует Service Worker в продакшене. В dev отключён — иначе SW
+ * Регистрирует Service Worker в продакшене. В dev отключён - иначе SW
  * кэширует устаревший контент между HMR-сборками.
  */
 export function ServiceWorkerRegister() {

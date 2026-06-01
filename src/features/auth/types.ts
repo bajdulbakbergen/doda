@@ -1,6 +1,6 @@
 /**
  * Возвращаемое состояние Server Action для форм через `useActionState`.
- * `errorKey` — ключ перевода в `messages/{locale}.json` под `auth.errors.*`.
+ * `errorKey` - ключ перевода в `messages/{locale}.json` под `auth.errors.*`.
  */
 export type AuthFormState =
   | { status: "idle" }

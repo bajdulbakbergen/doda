@@ -18,7 +18,7 @@ export function CookiesRu() {
     >
       <h2>1. Что такое cookies</h2>
       <p>
-        Cookies — небольшие текстовые файлы, размещаемые веб-сайтом в браузере пользователя
+        Cookies - небольшие текстовые файлы, размещаемые веб-сайтом в браузере пользователя
         для хранения информации, необходимой для корректной работы сайта, аналитики его
         использования и персонализации. Аналогичными технологиями являются local storage,
         session storage, IndexedDB и пиксельные трекеры.
@@ -38,18 +38,18 @@ export function CookiesRu() {
       </p>
       <ul>
         <li>
-          <code>sb-access-token</code>, <code>sb-refresh-token</code> — токены
+          <code>sb-access-token</code>, <code>sb-refresh-token</code> - токены
           аутентификации Supabase, срок 1 час / 30 дней;
         </li>
         <li>
-          <code>NEXT_LOCALE</code> — выбранный язык интерфейса, срок 1 год;
+          <code>NEXT_LOCALE</code> - выбранный язык интерфейса, срок 1 год;
         </li>
         <li>
-          <code>doda-install-dismissed-at</code> — флаг отклонения предложения установить
+          <code>doda-install-dismissed-at</code> - флаг отклонения предложения установить
           PWA, срок 14 дней;
         </li>
         <li>
-          <code>doda-cookie-consent</code> — выбор Пользователя в отношении необязательных
+          <code>doda-cookie-consent</code> - выбор Пользователя в отношении необязательных
           cookies, срок 365 дней.
         </li>
       </ul>
@@ -60,7 +60,7 @@ export function CookiesRu() {
       </p>
       <ul>
         <li>
-          <code>localStorage: doda-lot-filters</code> — последние применённые фильтры в
+          <code>localStorage: doda-lot-filters</code> - последние применённые фильтры в
           каталоге Лотов (хранится локально, не передаётся на сервер);
         </li>
         <li>сохранение состояния realtime-подписок при переходах между страницами.</li>
@@ -73,16 +73,16 @@ export function CookiesRu() {
       </p>
       <ul>
         <li>
-          <strong>PostHog</strong> (хостинг в Европейском Союзе) — продуктовая аналитика:
+          <strong>PostHog</strong> (хостинг в Европейском Союзе) - продуктовая аналитика:
           просмотры страниц, события (создание Лотов, подача Ставок), funnel-анализ. Срок
-          хранения cookies — до 1 года. Подробнее:{" "}
+          хранения cookies - до 1 года. Подробнее:{" "}
           <a href="https://posthog.com/privacy" target="_blank" rel="noreferrer">
             posthog.com/privacy
           </a>
           .
         </li>
         <li>
-          <strong>Sentry</strong> — сбор данных об ошибках для повышения стабильности
+          <strong>Sentry</strong> - сбор данных об ошибках для повышения стабильности
           сервиса. Личные данные в трейсах ошибок не передаются. Подробнее:{" "}
           <a href="https://sentry.io/privacy/" target="_blank" rel="noreferrer">
             sentry.io/privacy
@@ -102,9 +102,9 @@ export function CookiesRu() {
         cookies, которые он разрешает использовать. Доступны опции:
       </p>
       <ul>
-        <li><strong>Принять все</strong> — все категории cookies включены;</li>
-        <li><strong>Только необходимые</strong> — отключены функциональные и аналитические cookies;</li>
-        <li><strong>Настроить</strong> — выбор каждой категории отдельно.</li>
+        <li><strong>Принять все</strong> - все категории cookies включены;</li>
+        <li><strong>Только необходимые</strong> - отключены функциональные и аналитические cookies;</li>
+        <li><strong>Настроить</strong> - выбор каждой категории отдельно.</li>
       </ul>
       <p>
         Выбор Пользователя сохраняется на 365 дней. По истечении этого срока запрос
@@ -190,7 +190,7 @@ export function CookiesKk() {
     >
       <h2>1. Cookies дегеніміз не</h2>
       <p>
-        Cookies — сайттың дұрыс жұмыс істеуі, аналитика мен дербестендіру үшін браузерде
+        Cookies - сайттың дұрыс жұмыс істеуі, аналитика мен дербестендіру үшін браузерде
         сақталатын шағын мәтіндік файлдар. {operator.legalName} Платформасы осы
         технологияларды пайдаланады.
       </p>
@@ -202,9 +202,9 @@ export function CookiesKk() {
         Платформаның жұмысы үшін міндетті. Пайдаланушының келісімін қажет етпейді.
       </p>
       <ul>
-        <li><code>sb-access-token</code>, <code>sb-refresh-token</code> — Supabase аутентификациясы;</li>
-        <li><code>NEXT_LOCALE</code> — таңдалған тіл;</li>
-        <li><code>doda-cookie-consent</code> — cookies таңдауы.</li>
+        <li><code>sb-access-token</code>, <code>sb-refresh-token</code> - Supabase аутентификациясы;</li>
+        <li><code>NEXT_LOCALE</code> - таңдалған тіл;</li>
+        <li><code>doda-cookie-consent</code> - cookies таңдауы.</li>
       </ul>
 
       <h3>2.2. Функционалды</h3>
@@ -213,8 +213,8 @@ export function CookiesKk() {
       <h3>2.3. Аналитикалық</h3>
       <p>Тек айқын келісім бойынша:</p>
       <ul>
-        <li><strong>PostHog</strong> — өнімдік аналитика (ЕО хостинг);</li>
-        <li><strong>Sentry</strong> — қателер туралы деректерді жинау.</li>
+        <li><strong>PostHog</strong> - өнімдік аналитика (ЕО хостинг);</li>
+        <li><strong>Sentry</strong> - қателер туралы деректерді жинау.</li>
       </ul>
 
       <h2>3. Cookies-ті басқару</h2>

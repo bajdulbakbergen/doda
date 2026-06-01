@@ -33,7 +33,7 @@ export function ConversationListItem({ item }: { item: Item }) {
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2">
           <h3 className="truncate text-sm font-medium">
-            {item.otherParty?.display_name ?? "—"}
+            {item.otherParty?.display_name ?? "-"}
           </h3>
           <span className="text-foreground/50 shrink-0 text-xs">{time}</span>
         </div>

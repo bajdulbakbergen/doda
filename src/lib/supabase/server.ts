@@ -17,7 +17,7 @@ export async function createClient() {
             cookieStore.set(name, value, options);
           });
         } catch {
-          // Server Components cannot set cookies — это ОК если рефреш сессии
+          // Server Components cannot set cookies - это ОК если рефреш сессии
           // обрабатывается отдельно (например, в proxy.ts).
         }
       },

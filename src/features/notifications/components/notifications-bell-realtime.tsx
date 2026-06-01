@@ -39,7 +39,7 @@ export function NotificationsBellRealtime({ userId, initialUnread }: Props) {
           filter: `user_id=eq.${userId}`,
         },
         () => {
-          // На странице /notifications не инкрементим — там и так показывается 0.
+          // На странице /notifications не инкрементим - там и так показывается 0.
           if (pathname !== "/notifications") {
             setDelta((d) => d + 1);
           }

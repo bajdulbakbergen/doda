@@ -1,5 +1,5 @@
 {
-  "$comment": "Bubblewrap конфиг для генерации TWA (Trusted Web Activity) — Android приложение-обёртка вокруг PWA. Заполните placeholders перед сборкой APK/AAB.",
+  "$comment": "Bubblewrap конфиг для генерации TWA (Trusted Web Activity) - Android приложение-обёртка вокруг PWA. Заполните placeholders перед сборкой APK/AAB.",
   "packageId": "kz.doda.app",
   "host": "REPLACE_WITH_YOUR_DOMAIN.vercel.app",
   "name": "Doda",

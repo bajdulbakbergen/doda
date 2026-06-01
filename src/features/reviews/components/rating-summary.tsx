@@ -37,7 +37,7 @@ export function RatingSummary({ stats }: { stats: RatingStats }) {
             ? t("percentage", {
                 pct: Math.round((stats.completedDeals / stats.totalDeals) * 100),
               })
-            : "—"}
+            : "-"}
         </div>
       </Stat>
       <Stat label={t("cancelled")}>

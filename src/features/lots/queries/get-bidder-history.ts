@@ -15,7 +15,7 @@ export type BidderHistoryItem = {
 
 /**
  * Все ставки подрядчика по публичным лотам.
- * Скрываем приватные лоты — они не должны утекать.
+ * Скрываем приватные лоты - они не должны утекать.
  */
 export const getBidderHistory = cache(
   async (bidderId: string): Promise<BidderHistoryItem[]> => {

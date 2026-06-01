@@ -16,7 +16,7 @@ type Props = {
   currency: string;
   currentUserId: string | null;
   ownerId: string;
-  /** Лот закрыт без победителя и текущий юзер — владелец */
+  /** Лот закрыт без победителя и текущий юзер - владелец */
   canSelectWinner: boolean;
   winnerBidId: string | null;
 };

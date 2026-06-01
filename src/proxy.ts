@@ -10,7 +10,7 @@ export default async function proxy(request: NextRequest) {
   // 1) intl сначала: возможный redirect / rewrite на /[locale]/*
   const response = intlMiddleware(request);
 
-  // Если intl сделал redirect — пропускаем рефреш сессии (cookies всё равно
+  // Если intl сделал redirect - пропускаем рефреш сессии (cookies всё равно
   // уйдут на нужном URL после редиректа).
   if (response.headers.get("location")) {
     return response;

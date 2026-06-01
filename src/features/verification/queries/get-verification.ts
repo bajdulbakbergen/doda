@@ -7,7 +7,7 @@ export type Verification = Database["public"]["Tables"]["verifications"]["Row"];
 
 /**
  * Возвращает текущую активную верификацию (pending/approved) пользователя.
- * Rejected заявки игнорируются — пользователь может подать заново.
+ * Rejected заявки игнорируются - пользователь может подать заново.
  */
 export const getCurrentVerification = cache(async (): Promise<Verification | null> => {
   const supabase = await createClient();

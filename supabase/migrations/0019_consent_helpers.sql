@@ -1,6 +1,6 @@
 -- 0019_consent_helpers.sql
 -- Helper-функция для записи согласия сразу после signUp (когда session ещё не установлена
--- из-за email confirmation). Окно — 10 минут с момента создания auth.users.
+-- из-за email confirmation). Окно - 10 минут с момента создания auth.users.
 
 create or replace function public.record_signup_consent(
   p_user_id uuid,

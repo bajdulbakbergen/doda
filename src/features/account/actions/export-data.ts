@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 
 /**
  * Возвращает все данные пользователя в виде JSON-строки для скачивания.
- * Соответствует требованию ст. 26 ЗРК «О ПД» — право на доступ к своим данным.
+ * Соответствует требованию ст. 26 ЗРК «О ПД» - право на доступ к своим данным.
  */
 export async function exportMyDataAction(): Promise<
   { ok: true; filename: string; data: string } | { ok: false; error: string }

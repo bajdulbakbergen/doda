@@ -19,7 +19,7 @@ export async function signUpAction(
   const password = String(formData.get("password") ?? "");
   const displayName = String(formData.get("displayName") ?? "").trim();
 
-  // Юр. согласия — обязательные чекбоксы
+  // Юр. согласия - обязательные чекбоксы
   const acceptTerms = formData.get("acceptTerms") === "on";
   const acceptPersonalData = formData.get("acceptPersonalData") === "on";
 
@@ -54,7 +54,7 @@ export async function signUpAction(
   }
 
   // Фиксируем согласия в журнале (доказательная база)
-  // record_signup_consent — SECURITY DEFINER функция с grace-window 10 минут от создания auth.users.
+  // record_signup_consent - SECURITY DEFINER функция с grace-window 10 минут от создания auth.users.
   const userId = data.user?.id;
   if (userId) {
     for (const slug of REGISTRABLE_CONSENTS) {
@@ -66,7 +66,7 @@ export async function signUpAction(
       });
       if (consentError) {
         console.error("[signUp] consent record failed:", slug, consentError.message);
-        // не блокируем регистрацию — согласие зафиксировано на UI, в худшем случае
+        // не блокируем регистрацию - согласие зафиксировано на UI, в худшем случае
         // зарегистрируем повторно из callback
       }
     }

@@ -24,7 +24,7 @@ export async function forgotPasswordAction(
   const proto = headerList.get("x-forwarded-proto") ?? "http";
   const baseUrl = origin?.startsWith("http") ? origin : origin ? `${proto}://${origin}` : "";
 
-  // НЕ раскрываем существование email — всегда возвращаем success.
+  // НЕ раскрываем существование email - всегда возвращаем success.
   await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${baseUrl}/auth/callback?next=/auth/reset-password`,
   });

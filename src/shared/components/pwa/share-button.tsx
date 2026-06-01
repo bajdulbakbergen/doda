@@ -41,7 +41,7 @@ export function ShareButton({ title, url, text, variant = "icon", className }: P
       } catch (err) {
         // AbortError = user cancelled → молча выходим
         if (err instanceof Error && err.name === "AbortError") return;
-        // другие ошибки — fallback на clipboard
+        // другие ошибки - fallback на clipboard
       }
     }
 

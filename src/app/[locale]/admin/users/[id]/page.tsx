@@ -88,7 +88,7 @@ export default async function AdminUserDetailPage({ params }: Props) {
                   </td>
                   <td className="text-foreground/55 px-3 py-2 text-xs">{c.source}</td>
                   <td className="text-foreground/55 px-3 py-2 font-mono text-xs">
-                    {c.ip ?? "—"}
+                    {c.ip ?? "-"}
                   </td>
                 </tr>
               ))}
@@ -180,7 +180,7 @@ export default async function AdminUserDetailPage({ params }: Props) {
               >
                 <span className="font-mono">{a.action}</span>
                 <span className="text-foreground/55">
-                  {a.target_type ?? "—"}
+                  {a.target_type ?? "-"}
                   {a.target_id ? ` · ${a.target_id.slice(0, 8)}…` : ""}
                 </span>
                 <span className="text-foreground/55 font-mono">

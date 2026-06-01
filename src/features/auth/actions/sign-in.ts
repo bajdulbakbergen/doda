@@ -33,7 +33,7 @@ export async function signInAction(
   }
 
   const locale = await getLocale();
-  // Защита от open redirect — допускаем только относительные пути.
+  // Защита от open redirect - допускаем только относительные пути.
   const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/";
   redirect({ href: safeNext, locale });
 }

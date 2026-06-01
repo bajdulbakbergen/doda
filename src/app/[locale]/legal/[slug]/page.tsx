@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = legalDocs[slug];
   if (!doc) return { title: "404" };
-  // Юр. документы — только русская редакция (валидно по ЗРК «О языках» для частных сервисов).
+  // Юр. документы - только русская редакция (валидно по ЗРК «О языках» для частных сервисов).
   return { title: doc.titleRu };
 }
 

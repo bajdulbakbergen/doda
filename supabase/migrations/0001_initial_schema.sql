@@ -73,7 +73,7 @@ create index lots_owner_idx on public.lots (owner_id);
 ----------------------------------------------------------
 -- BIDS
 -- Подрядчик может изменить ставку максимум 3 раза.
--- Реализация: храним только активную ставку с change_count; история — отдельной таблицей позже.
+-- Реализация: храним только активную ставку с change_count; история - отдельной таблицей позже.
 ----------------------------------------------------------
 create table public.bids (
   id uuid primary key default gen_random_uuid(),
@@ -259,7 +259,7 @@ alter publication supabase_realtime add table public.bids;
 alter publication supabase_realtime add table public.lots;
 
 ----------------------------------------------------------
--- Стартовые категории (стройматериалы — приоритетная вертикаль)
+-- Стартовые категории (стройматериалы - приоритетная вертикаль)
 ----------------------------------------------------------
 insert into public.categories (slug, name_ru, name_kk, sort_order) values
   ('construction-materials', 'Стройматериалы', 'Құрылыс материалдары', 10),

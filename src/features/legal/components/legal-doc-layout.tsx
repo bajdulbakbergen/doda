@@ -10,7 +10,7 @@ type Props = {
 
 /**
  * Универсальный layout для юр. документа: шапка с заголовком/версией/датой,
- * типографика prose-like для длинных текстов, sticky table-of-contents в идеале —
+ * типографика prose-like для длинных текстов, sticky table-of-contents в идеале -
  * пока без неё, добавим если документы вырастут.
  */
 export function LegalDocLayout({ title, version, publishedAt, children }: Props) {

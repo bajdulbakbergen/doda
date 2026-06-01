@@ -10,7 +10,7 @@ export type AdminProfile = {
 
 /**
  * Возвращает профиль текущего юзера если он админ, иначе 404
- * (не 403 — чтобы не светить факт существования админ-URL).
+ * (не 403 - чтобы не светить факт существования админ-URL).
  */
 export async function requireAdmin(): Promise<AdminProfile> {
   const supabase = await createClient();

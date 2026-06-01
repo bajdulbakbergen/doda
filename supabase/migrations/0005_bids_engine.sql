@@ -73,7 +73,7 @@ alter publication supabase_realtime add table public.bid_changes;
 --   * если есть другие активные ставки, новая ставка <= min - step,
 --     где step = max(1000 ₸, 0.5% от min)
 --   * макс. 3 изменения собственной ставки
---   * anti-sniping: если ставка в последние 3 минуты — deadline += 5 минут
+--   * anti-sniping: если ставка в последние 3 минуты - deadline += 5 минут
 --                   (но не короче чем сейчас + 5 минут)
 ----------------------------------------------------------
 create or replace function public.submit_bid(p_lot_id uuid, p_amount numeric)

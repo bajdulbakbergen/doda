@@ -1,5 +1,5 @@
 -- 0009_notifications.sql
--- In-app уведомления через DB-триггеры. Email/Telegram — отдельной интеграцией позже.
+-- In-app уведомления через DB-триггеры. Email/Telegram - отдельной интеграцией позже.
 
 create type public.notification_type as enum (
   'lot_bid_placed',

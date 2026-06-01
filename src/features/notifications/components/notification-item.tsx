@@ -29,9 +29,9 @@ export function NotificationItem({ item }: Props) {
           {bidder ? <Avatar src={bidder.avatar_url} alt={bidder.display_name} size={32} /> : null}
           <div className="flex-1 text-sm">
             {t.rich("lot_bid_placed", {
-              bidder: bidder?.display_name ?? "—",
-              lot: lot?.title ?? "—",
-              amount: amount ? `${amount} ₸` : "—",
+              bidder: bidder?.display_name ?? "-",
+              lot: lot?.title ?? "-",
+              amount: amount ? `${amount} ₸` : "-",
               b: (chunks) => <strong className="font-medium">{chunks}</strong>,
             })}
           </div>
@@ -45,7 +45,7 @@ export function NotificationItem({ item }: Props) {
       body = (
         <div className="text-sm">
           {t.rich("lot_winner_selected", {
-            lot: lot?.title ?? "—",
+            lot: lot?.title ?? "-",
             b: (chunks) => <strong className="font-medium">{chunks}</strong>,
           })}
         </div>
@@ -61,8 +61,8 @@ export function NotificationItem({ item }: Props) {
       body = (
         <div className="text-sm">
           {t.rich("deal_status_changed", {
-            lot: lot?.title ?? "—",
-            status: newStatus ? tDealStatus(newStatus as never) : "—",
+            lot: lot?.title ?? "-",
+            status: newStatus ? tDealStatus(newStatus as never) : "-",
             b: (chunks) => <strong className="font-medium">{chunks}</strong>,
           })}
         </div>
@@ -82,7 +82,7 @@ export function NotificationItem({ item }: Props) {
           <div className="flex-1 space-y-1 text-sm">
             <div>
               {t.rich("review_received", {
-                reviewer: reviewer?.display_name ?? "—",
+                reviewer: reviewer?.display_name ?? "-",
                 b: (chunks) => <strong className="font-medium">{chunks}</strong>,
               })}
             </div>
@@ -104,7 +104,7 @@ export function NotificationItem({ item }: Props) {
           {sender ? <Avatar src={sender.avatar_url} alt={sender.display_name} size={32} /> : null}
           <div className="flex-1 text-sm">
             {t.rich("message_received", {
-              sender: sender?.display_name ?? "—",
+              sender: sender?.display_name ?? "-",
               b: (chunks) => <strong className="font-medium">{chunks}</strong>,
             })}
           </div>
@@ -119,7 +119,7 @@ export function NotificationItem({ item }: Props) {
       body = (
         <div className="text-sm">
           {t.rich("lot_invite_received", {
-            lot: lot?.title ?? "—",
+            lot: lot?.title ?? "-",
             b: (chunks) => <strong className="font-medium">{chunks}</strong>,
           })}
         </div>

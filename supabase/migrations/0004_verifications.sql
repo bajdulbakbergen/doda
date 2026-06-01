@@ -18,7 +18,7 @@ create table public.verifications (
 );
 
 -- Не более одной активной заявки (pending или approved) на пользователя.
--- Rejected — повторно подавать можно.
+-- Rejected - повторно подавать можно.
 create unique index verifications_active_per_user_idx
   on public.verifications (user_id)
   where status in ('pending', 'approved');

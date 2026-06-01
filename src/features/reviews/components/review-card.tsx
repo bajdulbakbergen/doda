@@ -26,7 +26,7 @@ export function ReviewCard({ review }: { review: ReviewWithReviewer }) {
             <span className="text-sm font-medium">{review.reviewer.display_name}</span>
           </Link>
         ) : (
-          <span className="text-foreground/60 text-sm">—</span>
+          <span className="text-foreground/60 text-sm">-</span>
         )}
         <span className="text-foreground/40 text-xs">{date}</span>
         <div className="ml-auto">

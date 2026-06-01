@@ -8,7 +8,7 @@ export const { Link, usePathname, useRouter, getPathname } = navigation;
 /**
  * Обёртка над `navigation.redirect` с явным `never`. Без неё TypeScript
  * (по крайней мере 5.x) не сужает типы после redirect внутри Server Actions
- * и `if (!x) redirect(...)` ветвей — destructured тип теряет `never`.
+ * и `if (!x) redirect(...)` ветвей - destructured тип теряет `never`.
  */
 export function redirect(args: { href: string; locale: string }): never {
   navigation.redirect(args);

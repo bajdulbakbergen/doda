@@ -1,8 +1,8 @@
 /**
- * Форматирование денег. Дефолт KZT, разделитель тысяч — неразрывный пробел.
+ * Форматирование денег. Дефолт KZT, разделитель тысяч - неразрывный пробел.
  */
 export function formatPrice(amount: number | null | undefined, currency = "KZT"): string {
-  if (amount == null) return "—";
+  if (amount == null) return "-";
   const formatted = new Intl.NumberFormat("ru-RU", {
     style: "decimal",
     maximumFractionDigits: 0,
@@ -21,7 +21,7 @@ export function calculateMinStep(lowestBid: number | null | undefined): number {
 
 /**
  * Максимальная допустимая сумма следующей ставки.
- * Если активных ставок нет — возвращаем `startingPrice` (или null если он не задан).
+ * Если активных ставок нет - возвращаем `startingPrice` (или null если он не задан).
  */
 export function calculateMaxAllowed(
   lowestBid: number | null | undefined,

@@ -1,4 +1,4 @@
-// Doda Service Worker — простая стратегия:
+// Doda Service Worker - простая стратегия:
 // - HTML/navigation: network-first с offline-fallback
 // - Static (_next/static, /icon, /apple-touch-icon, /manifest): cache-first
 // - Остальное: пропускаем без вмешательства
