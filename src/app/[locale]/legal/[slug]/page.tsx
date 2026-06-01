@@ -10,12 +10,11 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { slug } = await params;
   const doc = legalDocs[slug];
   if (!doc) return { title: "404" };
-  return {
-    title: locale === "kk" ? doc.titleKk : doc.titleRu,
-  };
+  // Юр. документы — только русская редакция (валидно по ЗРК «О языках» для частных сервисов).
+  return { title: doc.titleRu };
 }
 
 export default async function LegalDocPage({ params }: Props) {
@@ -23,6 +22,9 @@ export default async function LegalDocPage({ params }: Props) {
   setRequestLocale(locale);
   const doc = legalDocs[slug];
   if (!doc) notFound();
-  const Component = locale === "kk" ? doc.Kk : doc.Ru;
+  // Всегда рендерим русскую редакцию, независимо от выбранного локаля интерфейса.
+  // Казахские версии (doc.Kk) оставлены в коде на случай если в будущем
+  // понадобятся, но не используются.
+  const Component = doc.Ru;
   return <Component />;
 }
