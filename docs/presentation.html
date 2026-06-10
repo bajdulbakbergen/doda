@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doda — презентация проекта</title>
+<style>
+  :root {
+    --bg: #0a0f0d;
+    --fg: #f5f7f6;
+    --muted: #9ca3a1;
+    --accent: #10b981;
+    --accent-dark: #047857;
+    --border: rgba(255,255,255,0.08);
+    --card: rgba(255,255,255,0.03);
+    --card-hover: rgba(255,255,255,0.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Inter", system-ui, sans-serif;
+    line-height: 1.55;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .deck { scroll-snap-type: y mandatory; height: 100vh; overflow-y: auto; }
+  .slide {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    padding: 6vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .slide-num {
+    position: absolute;
+    top: 3vh; right: 4vw;
+    color: var(--muted);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  h1 { font-size: clamp(40px, 6vw, 88px); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 24px; }
+  h2 { font-size: clamp(28px, 4.2vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 28px; }
+  h3 { font-size: clamp(20px, 2vw, 24px); font-weight: 600; margin-bottom: 12px; }
+  p  { color: var(--fg); opacity: 0.92; max-width: 76ch; }
+  p.lead { font-size: clamp(20px, 1.9vw, 26px); opacity: 0.85; max-width: 60ch; }
+  .muted { color: var(--muted); }
+  .accent { color: var(--accent); }
+  .pill {
+    display: inline-flex; align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(16,185,129,0.12);
+    color: var(--accent);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  ul { list-style: none; }
+  ul.bullets li {
+    position: relative;
+    padding-left: 28px;
+    margin: 10px 0;
+    max-width: 70ch;
+  }
+  ul.bullets li::before {
+    content: "→";
+    position: absolute; left: 0; top: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .grid { display: grid; gap: 20px; margin-top: 24px; }
+  .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 800px) {
+    .grid.cols-3, .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-2 { grid-template-columns: 1fr; }
+    .slide { padding: 8vh 6vw; }
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px 24px;
+    transition: background 160ms;
+  }
+  .card:hover { background: var(--card-hover); }
+  .card .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(16,185,129,0.14);
+    color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px;
+    margin-bottom: 14px;
+  }
+  .stat .big {
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .stat .label { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+  .logo-tile {
+    width: 120px; height: 120px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    border-radius: 28px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 64px; font-weight: 800;
+    letter-spacing: -0.04em;
+    box-shadow: 0 20px 60px -10px rgba(16,185,129,0.5);
+    margin-bottom: 40px;
+  }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 15px; }
+  th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+  td.law { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; color: var(--muted); }
+  .badge-green { background: rgba(16,185,129,0.14); color: var(--accent); padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .badge-amber { background: rgba(245,158,11,0.14); color: #fbbf24; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .timeline { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+  .timeline-item { display: grid; grid-template-columns: 90px 1fr; gap: 24px; align-items: start; padding: 14px 0; border-top: 1px solid var(--border); }
+  .timeline-item .when { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: 0.06em; }
+  .pretitle { color: var(--muted); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; font-weight: 600; }
+
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr;
+    gap: 8px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .flow .step { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+  .flow .step .step-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .flow .step .step-name { font-weight: 600; }
+  .flow .arrow { color: var(--accent); font-size: 22px; text-align: center; }
+  @media (max-width: 900px) {
+    .flow { grid-template-columns: 1fr; }
+    .flow .arrow { transform: rotate(90deg); padding: 4px 0; }
+  }
+
+  nav.dots {
+    position: fixed;
+    right: 16px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 8px;
+    z-index: 100;
+  }
+  nav.dots button {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 0; padding: 0;
+    background: rgba(255,255,255,0.15);
+    cursor: pointer;
+    transition: background 160ms, transform 160ms;
+  }
+  nav.dots button.active { background: var(--accent); transform: scale(1.4); }
+  nav.dots button:hover { background: rgba(255,255,255,0.4); }
+
+  .hint {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    color: var(--muted);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid var(--border);
+    opacity: 0.5;
+    transition: opacity 240ms;
+    z-index: 100;
+  }
+  .hint:hover { opacity: 1; }
+
+  /* Print */
+  @media print {
+    @page { size: A4 landscape; margin: 0; }
+    html, body { background: white; color: black; }
+    nav.dots, .hint { display: none; }
+    .deck { height: auto; overflow: visible; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 0;
+      height: auto;
+      padding: 1cm 1.4cm;
+      border: none;
+    }
+    .card { border-color: rgba(0,0,0,0.1); background: white; }
+    .accent { color: var(--accent-dark); }
+    .eyebrow { color: var(--accent-dark); }
+    h1, h2, h3, p, td, th, li { color: black !important; }
+    p.muted, .muted, td.law, .label, .step-label, .when, th { color: #555 !important; }
+    .pill, .badge-green { color: var(--accent-dark) !important; background: rgba(4,120,87,0.1) !important; }
+    .logo-tile { box-shadow: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="dots" aria-label="Навигация по слайдам"></nav>
+
+<div class="deck" id="deck">
+
+  <!-- 1. Title -->
+  <section class="slide">
+    <span class="slide-num">01 / 20</span>
+    <div class="logo-tile">D</div>
+    <h1>Doda</h1>
+    <p class="lead muted" style="margin-top: 8px;">B2B тендерная платформа для Казахстана</p>
+    <p class="muted" style="margin-top: 60px; font-size: 14px;">Презентация для заказчика • Стек, функционал, юридика, готовность к запуску</p>
+  </section>
+
+  <!-- 2. Problem -->
+  <section class="slide">
+    <span class="slide-num">02 / 20</span>
+    <span class="eyebrow">Проблема</span>
+    <h2>B2B-закупки в РК — раздроблены и непрозрачны</h2>
+    <ul class="bullets" style="font-size: 19px; margin-top: 16px;">
+      <li>Заказчики гоняют запросы по WhatsApp и таблицам, теряют ставки и историю</li>
+      <li>Подрядчики не понимают, кто им конкурирует и за какую цену — нет прозрачности</li>
+      <li>Goszakup закрывает только госсектор; частный B2B остаётся без инфраструктуры</li>
+      <li>Profi.ru-формат заточен под физлиц; механики обратного аукциона нет</li>
+      <li>Юридическая база сделки строится с нуля каждый раз — нет шаблонов и доказательной базы</li>
+    </ul>
+  </section>
+
+  <!-- 3. Solution -->
+  <section class="slide">
+    <span class="slide-num">03 / 20</span>
+    <span class="eyebrow">Решение</span>
+    <h2>Один кабинет. Заказчик и подрядчик. Обратный аукцион.</h2>
+    <p class="lead" style="margin-bottom: 32px;">Doda — это marketplace, где зарегистрированный пользователь одновременно может быть и заказчиком, и подрядчиком. Создаёшь лот → подрядчики делают ставки в realtime → выбираешь победителя → сделка трекается до закрытия.</p>
+    <div class="grid cols-3">
+      <div class="card stat"><div class="big">1</div><div class="label">аккаунт = две роли</div></div>
+      <div class="card stat"><div class="big">100%</div><div class="label">прозрачность ставок</div></div>
+      <div class="card stat"><div class="big">RU + KK</div><div class="label">локализация</div></div>
+    </div>
+  </section>
+
+  <!-- 4. Roles -->
+  <section class="slide">
+    <span class="slide-num">04 / 20</span>
+    <span class="eyebrow">Архитектура ролей</span>
+    <h2>Заказчик / подрядчик — это <span class="accent">действия</span>, не роли</h2>
+    <div class="grid cols-3" style="margin-top: 32px;">
+      <div class="card">
+        <div class="icon">1</div>
+        <h3>Гость</h3>
+        <p class="muted">Каталог лотов, профили, блоги, история сделок — всё публично, индексируется в Google</p>
+      </div>
+      <div class="card">
+        <div class="icon">2</div>
+        <h3>Зарегистрированный</h3>
+        <p class="muted">Сохранять, подписываться, писать в чат. Email + 2FA, восстановление пароля</p>
+      </div>
+      <div class="card">
+        <div class="icon">3</div>
+        <h3>Верифицированный</h3>
+        <p class="muted">Создавать лоты, подавать ставки. ИП/ТОО + УДЛ через приватное хранилище, ручная модерация</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 32px; font-size: 15px;">Верификация триггерится <strong>в момент попытки действия</strong>, а не при регистрации — низкий барьер входа, фильтр по факту</p>
+  </section>
+
+  <!-- 5. Bid engine -->
+  <section class="slide">
+    <span class="slide-num">05 / 20</span>
+    <span class="eyebrow">Тендерное ядро</span>
+    <h2>Обратный аукцион с защитой от снайперов</h2>
+    <div class="grid cols-2" style="margin-top: 16px;">
+      <div class="card">
+        <h3>Realtime каскад ставок</h3>
+        <p class="muted">Все ставки публичны, сортируются от лучшей в реальном времени через Supabase Realtime. Подрядчик видит свою позицию и конкурентов сразу</p>
+      </div>
+      <div class="card">
+        <h3>Anti-sniping</h3>
+        <p class="muted">Ставка в последние 3 минуты до дедлайна → автоматически +5 минут к таймеру. Никто не выиграет на последней секунде</p>
+      </div>
+      <div class="card">
+        <h3>Лимит изменений</h3>
+        <p class="muted">Подрядчик меняет свою ставку <strong>максимум 3 раза</strong>. Защита от «спам-демпинга»</p>
+      </div>
+      <div class="card">
+        <h3>Минимальный шаг</h3>
+        <p class="muted">max(1000 ₸, 0.5% от лучшей цены). Дёргаться по 100 ₸ нельзя</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 24px; font-size: 15px;">Атомарность гарантирована: все правила реализованы в Postgres-функции <code>submit_bid</code> с оптимистическими блокировками. Гонок нет даже при тысячах одновременных ставок.</p>
+  </section>
+
+  <!-- 6. Transparency -->
+  <section class="slide">
+    <span class="slide-num">06 / 20</span>
+    <span class="eyebrow">УТП</span>
+    <h2>Публичная история подрядчика — главное конкурентное преимущество</h2>
+    <p class="lead">В профиле каждого подрядчика — <strong>все его ставки во всех лотах</strong>, с историей изменений, исходом, отзывами и агрегатами.</p>
+    <div class="grid cols-4" style="margin-top: 32px;">
+      <div class="card stat"><div class="big">Σ</div><div class="label">количество сделок</div></div>
+      <div class="card stat"><div class="big">%</div><div class="label">success rate</div></div>
+      <div class="card stat"><div class="big">₸</div><div class="label">средний чек</div></div>
+      <div class="card stat"><div class="big">⏱</div><div class="label">скорость ответа</div></div>
+    </div>
+    <p class="muted" style="margin-top: 28px; font-size: 15px;">Подрядчик не может «починить» свою репутацию или скрыть проигранные тендеры. Заказчик видит реальную картину — это снижает риск и повышает доверие к маркетплейсу.</p>
+  </section>
+
+  <!-- 7. Deal lifecycle -->
+  <section class="slide">
+    <span class="slide-num">07 / 20</span>
+    <span class="eyebrow">Сделки и репутация</span>
+    <h2>Lifecycle сделки с обоюдным подтверждением</h2>
+    <div class="flow">
+      <div class="step"><div class="step-label">Предложение</div><div class="step-name">proposed</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="step-label">Заказчик принял</div><div class="step-name">contracted</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="step-label">Подрядчик подтвердил оплату</div><div class="step-name">paid</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="step-label">Заказчик подтвердил получение</div><div class="step-name">delivered</div></div>
+    </div>
+    <p class="muted" style="margin-top: 32px; font-size: 16px;">Каждый шаг подтверждает <strong>принимающая сторона</strong> — заказчик не может в одностороннем порядке поставить «оплачено» без согласия подрядчика. Защита от мошенничества заложена в Postgres-функцию.</p>
+    <div style="margin-top: 24px;">
+      <span class="pill">+ закрытие → отзыв 1-5★ + комментарий</span>
+    </div>
+  </section>
+
+  <!-- 8. Social -->
+  <section class="slide">
+    <span class="slide-num">08 / 20</span>
+    <span class="eyebrow">Блоги и лента</span>
+    <h2>Социальный слой как driver вовлечённости</h2>
+    <div class="grid cols-4">
+      <div class="card"><h3>Кейс</h3><p class="muted">«Сделали навес 400м², бюджет N, срок 3 нед» — со ссылкой на конкретный лот</p></div>
+      <div class="card"><h3>Продукт</h3><p class="muted">Что вы продаёте/делаете на регулярной основе. С ценой и регионом</p></div>
+      <div class="card"><h3>Новость</h3><p class="muted">Расширение, новое оборудование, рекордный проект</p></div>
+      <div class="card"><h3>Медиа</h3><p class="muted">Фото с площадки, видео процесса, before/after</p></div>
+    </div>
+    <p class="muted" style="margin-top: 28px;">Лента ранжируется по likes + saves×1.5 + boost для свежих 48 ч. Дедупликация: один пост — одному пользователю один раз. Альтернативы рекомендациям всегда доступны: профиль автора, категорийная лента, поиск.</p>
+  </section>
+
+  <!-- 9. Messenger + invites -->
+  <section class="slide">
+    <span class="slide-num">09 / 20</span>
+    <span class="eyebrow">Коммуникации</span>
+    <h2>Встроенный мессенджер, привязанный к лоту</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Точки входа</h3>
+        <ul class="bullets">
+          <li>«Написать» в посте или профиле</li>
+          <li>«Задать вопрос» в карточке лота — диалог привязывается к лоту</li>
+          <li>Реалтайм-доставка через Supabase</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Приватные лоты</h3>
+        <ul class="bullets">
+          <li>Заказчик пригласил подрядчика прямо из чата</li>
+          <li>Подрядчик видит баннер accept/decline на странице лота</li>
+          <li>После принятия — может подавать ставки</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 24px;">Антиспам: лимит 5 сообщений/день для неверифицированных, жалобы и блокировки заложены в схему.</p>
+  </section>
+
+  <!-- 10. Notifications -->
+  <section class="slide">
+    <span class="slide-num">10 / 20</span>
+    <span class="eyebrow">Уведомления</span>
+    <h2>8 типов событий, доставка в realtime</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Триггеры (in-app, готово)</h3>
+        <ul class="bullets" style="font-size: 16px;">
+          <li>Новая ставка на ваш лот</li>
+          <li>Вашу ставку перебили</li>
+          <li>Лот закрывается через час</li>
+          <li>Вы выбраны победителем</li>
+          <li>Статус сделки изменился</li>
+          <li>Новый отзыв</li>
+          <li>Новое сообщение</li>
+          <li>Приглашение в приватный лот</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Каналы (готовая инфраструктура)</h3>
+        <ul class="bullets" style="font-size: 16px;">
+          <li>In-app bell + realtime подписка</li>
+          <li>Web push (после Phase 2)</li>
+          <li>Email (после подключения SMTP)</li>
+          <li>SMS через Mobizon (для KZ критично)</li>
+          <li>Telegram-бот</li>
+        </ul>
+        <p class="muted" style="margin-top: 12px; font-size: 14px;">Все каналы — пользовательская настройка в кабинете</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Mobile / PWA / TWA -->
+  <section class="slide">
+    <span class="slide-num">11 / 20</span>
+    <span class="eyebrow">Mobile</span>
+    <h2>PWA + TWA: устанавливается как обычное приложение</h2>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>PWA</h3>
+        <p class="muted">Manifest, Service Worker, offline-страница, install prompt, bottom navigation на мобилке, safe-area-insets для iPhone X+</p>
+      </div>
+      <div class="card">
+        <h3>TWA для Android</h3>
+        <p class="muted">Бандл готов через Bubblewrap: assetlinks.json в репо, twa-manifest.json настроен. Загружаешь .aab в Play Store — приложение из коробки</p>
+      </div>
+      <div class="card">
+        <h3>Native APIs</h3>
+        <p class="muted">Web Share API для расшаривания лотов и постов, fallback на clipboard. iOS «Добавить на главный экран», Android install prompt</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 28px; font-size: 15px;">Подход экономит ≈$50-100K на разработке нативных приложений и год работы команды. iOS-нативка делается позже, когда появится трекшен.</p>
+  </section>
+
+  <!-- 12. Legal compliance (BIG) -->
+  <section class="slide">
+    <span class="slide-num">12 / 20</span>
+    <span class="eyebrow">Юридический пакет</span>
+    <h2>Полное соответствие законодательству РК</h2>
+    <p class="lead">8 production-уровня документов, доказательная база, регистрация согласий с IP+User-Agent, право на удаление и экспорт данных.</p>
+    <table style="margin-top: 24px;">
+      <thead><tr><th>Документ</th><th>Назначение</th><th>Основание</th></tr></thead>
+      <tbody>
+        <tr><td>Пользовательское соглашение</td><td>Правила использования платформы</td><td class="law">ГК РК ст. 393-396</td></tr>
+        <tr><td>Политика конфиденциальности</td><td>Какие данные собираем и зачем</td><td class="law">ЗРК «О ПД» №94-V</td></tr>
+        <tr><td>Согласие на обработку ПД</td><td>Явное согласие пользователя</td><td class="law">ЗРК «О ПД» ст. 8</td></tr>
+        <tr><td>Публичная оферта</td><td>Условия посредничества</td><td class="law">ГК РК ст. 395</td></tr>
+        <tr><td>Регламент торгов</td><td>Правила обратного аукциона</td><td class="law">внутр. регламент</td></tr>
+        <tr><td>Регламент разрешения споров</td><td>Pre-litigation процедура</td><td class="law">ГК РК ст. 9</td></tr>
+        <tr><td>Правила публикации контента</td><td>UGC модерация</td><td class="law">ЗРК «О СМИ» №451-I</td></tr>
+        <tr><td>Cookie Policy</td><td>Согласие на трекинг</td><td class="law">GDPR-aligned</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top: 16px; font-size: 14px;">Все 8 документов: <code>/legal/{slug}</code>. Версионирование заложено: при изменении content — версия в registry увеличивается, согласия переподписываются.</p>
+  </section>
+
+  <!-- 13. Compliance mechanisms -->
+  <section class="slide">
+    <span class="slide-num">13 / 20</span>
+    <span class="eyebrow">Доказательная база</span>
+    <h2>Согласия фиксируются атомарно — оспорить нельзя</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>На регистрации</h3>
+        <p class="muted">Два обязательных чекбокса (Условия + ПД). Согласия передаются в user_metadata, <strong>DB-триггер атомарно</strong> пишет в user_consents в той же транзакции. Если запись не прошла — регистрация откатывается.</p>
+      </div>
+      <div class="card">
+        <h3>Cookie banner</h3>
+        <p class="muted">3 категории (необходимые / функциональные / аналитика). PostHog инициализируется <strong>только</strong> если пользователь дал согласие на analytics. Для авторизованных — server-side запись с IP и User-Agent.</p>
+      </div>
+      <div class="card">
+        <h3>Admin-панель (доступ только админу)</h3>
+        <p class="muted">Полная история согласий по каждому пользователю: документ + версия + время + IP + User-Agent + источник. Готовый отчёт для регулятора.</p>
+      </div>
+      <div class="card">
+        <h3>Право на удаление и экспорт</h3>
+        <p class="muted">Пользователь скачивает JSON со всеми своими данными или запрашивает удаление с 30-дневным grace. Cron автоматически анонимизирует профиль после grace, блокирует вход.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. Security -->
+  <section class="slide">
+    <span class="slide-num">14 / 20</span>
+    <span class="eyebrow">Безопасность</span>
+    <h2>OWASP-чек + защита персональных данных</h2>
+    <div class="grid cols-3">
+      <div class="card"><h3>Row-Level Security</h3><p class="muted">На всех таблицах. Пользователь физически не может прочитать чужие данные через API</p></div>
+      <div class="card"><h3>2FA (TOTP)</h3><p class="muted">Полная реализация: enroll + challenge на signin. Совместимо с Google Authenticator, 1Password, Bitwarden</p></div>
+      <div class="card"><h3>Приватный bucket</h3><p class="muted">УДЛ/паспорта в отдельном bucket с RLS. Админ видит через подписанные URL с TTL 1 час</p></div>
+      <div class="card"><h3>Аудит-логи</h3><p class="muted">Все важные действия: создание лота, ставка, изменение статуса сделки, верификация. Полный трейл</p></div>
+      <div class="card"><h3>Чёрный список БИН</h3><p class="muted">DB-триггер блокирует регистрацию ТОО из чёрного списка ещё до создания заявки</p></div>
+      <div class="card"><h3>Защита от open redirect</h3><p class="muted">Все redirect-параметры валидируются — относительные пути только</p></div>
+    </div>
+  </section>
+
+  <!-- 15. Tech stack -->
+  <section class="slide">
+    <span class="slide-num">15 / 20</span>
+    <span class="eyebrow">Технический стек</span>
+    <h2>Production-grade, без legacy</h2>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>Frontend</h3>
+        <ul class="bullets" style="font-size: 15px;">
+          <li>Next.js 16 App Router</li>
+          <li>React 19</li>
+          <li>TypeScript strict</li>
+          <li>Tailwind CSS v4</li>
+          <li>next-intl (RU/KK)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Backend</h3>
+        <ul class="bullets" style="font-size: 15px;">
+          <li>Supabase (Postgres 15)</li>
+          <li>Auth + Realtime + Storage</li>
+          <li>RLS на всех таблицах</li>
+          <li>23 миграции (версионируются)</li>
+          <li>SECURITY DEFINER функции</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Инфраструктура</h3>
+        <ul class="bullets" style="font-size: 15px;">
+          <li>Vercel (serverless)</li>
+          <li>Vercel Cron для фоновых задач</li>
+          <li>Sentry SDK подключён</li>
+          <li>PostHog с consent gating</li>
+          <li>SSR + ISR для SEO</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 28px; font-size: 15px;">Открытые стандарты, нет vendor lock-in: при необходимости миграция с Vercel на любую другую платформу — без перерайтов кода.</p>
+  </section>
+
+  <!-- 16. What's done -->
+  <section class="slide">
+    <span class="slide-num">16 / 20</span>
+    <span class="eyebrow">Готовность</span>
+    <h2>Что готово к демо и бета-тесту</h2>
+    <div class="grid cols-4">
+      <div class="card stat"><div class="big">5/5</div><div class="label">этапов брифа</div></div>
+      <div class="card stat"><div class="big">23</div><div class="label">миграции БД</div></div>
+      <div class="card stat"><div class="big">50+</div><div class="label">страниц</div></div>
+      <div class="card stat"><div class="big">0</div><div class="label">ошибок lint/build</div></div>
+    </div>
+    <div class="grid cols-2" style="margin-top: 32px;">
+      <div class="card">
+        <h3>Полностью реализовано</h3>
+        <ul class="bullets" style="font-size: 15px;">
+          <li>Аутентификация + 2FA + восстановление пароля</li>
+          <li>Верификация ТОО/ИП с приватным хранилищем</li>
+          <li>Лоты, ставки, реалтайм, выбор победителя</li>
+          <li>Сделки, статусы, отзывы, рейтинг</li>
+          <li>Блоги, лента, мессенджер, приглашения</li>
+          <li>Admin-панель с доказательной базой</li>
+          <li>PWA + TWA + Android-готовность</li>
+          <li>Полный юр. пакет под РК</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Отложено (Phase 2)</h3>
+        <ul class="bullets" style="font-size: 15px;">
+          <li>Kaspi/Halyk эквайринг (нужны merchant keys)</li>
+          <li>Email-рассылки (нужен SMTP-провайдер)</li>
+          <li>Telegram-бот (отдельный worker)</li>
+          <li>SMS через Mobizon (нужен договор)</li>
+          <li>Эскроу (требует лицензии НБ РК)</li>
+          <li>Шифрование БИН/ИИН at rest</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17. What client needs to provide -->
+  <section class="slide">
+    <span class="slide-num">17 / 20</span>
+    <span class="eyebrow">Что нужно от заказчика</span>
+    <h2>Чек-лист на запуск бета-теста</h2>
+    <table>
+      <thead><tr><th>Категория</th><th>Что</th><th>Зачем</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge-green">Юр</span></td><td>Реквизиты ТОО: БИН, юр. адрес, директор, банк</td><td>Подставляются в 8 юр. документов и футер</td></tr>
+        <tr><td><span class="badge-green">Юр</span></td><td>Регистрация в Реестре операторов ПД (Минцифры РК)</td><td>Обязательно по ЗРК «О ПД»</td></tr>
+        <tr><td><span class="badge-amber">Фин</span></td><td>Расчётный счёт + Kaspi/Halyk merchant ID</td><td>Эквайринг для комиссий</td></tr>
+        <tr><td><span class="badge-amber">Тех</span></td><td>SMTP-провайдер (Postmark или Resend)</td><td>Транзакционные email</td></tr>
+        <tr><td><span class="badge-amber">Тех</span></td><td>Telegram bot token</td><td>Уведомления по подписке</td></tr>
+        <tr><td><span class="badge-amber">Тех</span></td><td>Mobizon API ключ</td><td>SMS-уведомления</td></tr>
+        <tr><td><span class="badge-green">Брендинг</span></td><td>Логотип в high-res, favicon, OG-cover</td><td>Финальный визуал</td></tr>
+        <tr><td><span class="badge-green">Тариф</span></td><td>Размер комиссии в %</td><td>Финансовая модель</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top: 16px; font-size: 14px;">Полный список — в <code>docs/LEGAL_HANDOFF.md</code> в репозитории.</p>
+  </section>
+
+  <!-- 18. Business model -->
+  <section class="slide">
+    <span class="slide-num">18 / 20</span>
+    <span class="eyebrow">Бизнес-модель</span>
+    <h2>Три источника дохода</h2>
+    <div class="grid cols-3">
+      <div class="card">
+        <div class="icon">①</div>
+        <h3>Комиссия с заказчика</h3>
+        <p class="muted">5% (настраивается) от суммы успешной сделки. Платится <strong>после</strong> закрытия — нулевой барьер входа для заказчиков</p>
+      </div>
+      <div class="card">
+        <div class="icon">②</div>
+        <h3>Платное продвижение постов</h3>
+        <p class="muted">Boost постов в ленте, выделение в каталоге лотов. Подрядчики готовы платить за лиды</p>
+      </div>
+      <div class="card">
+        <div class="icon">③</div>
+        <h3>Подписки (Phase 3)</h3>
+        <p class="muted">Premium-аккаунт для подрядчиков: расширенная статистика, приоритет в фильтрах, белый лейбл</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 32px; font-size: 15px;">Эскроу намеренно отложен — требует лицензии НБ РК. Сделки трекаются off-platform, статус ведётся в БД. После трекшена можно подавать на лицензию.</p>
+  </section>
+
+  <!-- 19. Roadmap -->
+  <section class="slide">
+    <span class="slide-num">19 / 20</span>
+    <span class="eyebrow">Roadmap</span>
+    <h2>От демо к коммерческому запуску</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="when">СЕГОДНЯ</div><div><h3>Демо</h3><p class="muted">Полнофункциональный MVP в production на <code>doda-nine.vercel.app</code>. Все 5 этапов закрыты, лицензионная база подготовлена.</p></div></div>
+      <div class="timeline-item"><div class="when">1-2 НЕДЕЛИ</div><div><h3>Подготовка к бета</h3><p class="muted">Реквизиты в operator.ts, регистрация в Минцифры, кастомный домен, SMTP, первые 5-10 пилотных подрядчиков.</p></div></div>
+      <div class="timeline-item"><div class="when">1 МЕСЯЦ</div><div><h3>Бета-тест</h3><p class="muted">Открытая регистрация, ручная модерация, сбор обратной связи, итерации UX. Целевой показатель — 50 верифицированных аккаунтов и 10 закрытых сделок.</p></div></div>
+      <div class="timeline-item"><div class="when">КВАРТАЛ</div><div><h3>Коммерческий запуск</h3><p class="muted">Подключение Kaspi эквайринга, маркетинговая кампания, расширение на 3-5 категорий. Цель — 100 закрытых сделок и первая комиссионная выручка.</p></div></div>
+      <div class="timeline-item"><div class="when">ПОЛГОДА</div><div><h3>Масштабирование</h3><p class="muted">Telegram-бот, нативное Android (через TWA в Play Store), мобильные push, расширение на регионы (Алматы, Шымкент).</p></div></div>
+    </div>
+  </section>
+
+  <!-- 20. Closing -->
+  <section class="slide">
+    <span class="slide-num">20 / 20</span>
+    <span class="eyebrow">Финал</span>
+    <h2>Готовы передать продукт под ключ</h2>
+    <p class="lead">Весь код в открытом репозитории, документация полная, права и интеллектуальная собственность переходят заказчику. Поддержка на период бета-теста включена.</p>
+    <div class="grid cols-2" style="margin-top: 40px;">
+      <div class="card">
+        <h3>Demo URL</h3>
+        <p class="muted" style="font-family: ui-monospace, monospace; font-size: 16px;">doda-nine.vercel.app</p>
+      </div>
+      <div class="card">
+        <h3>Источники документации</h3>
+        <ul class="bullets" style="font-size: 15px;">
+          <li><code>docs/LEGAL_HANDOFF.md</code> — юр. пакет + чек-лист передачи</li>
+          <li><code>AGENTS.md</code> — техническая документация</li>
+          <li><code>supabase/migrations/</code> — 23 миграции в порядке</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 56px; text-align: center;">Спасибо за внимание</p>
+  </section>
+
+</div>
+
+<div class="hint">← → для навигации • Cmd/Ctrl + P для экспорта в PDF</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsNav = document.querySelector('nav.dots');
+
+  // Build dots
+  slides.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Слайд ${i + 1}`);
+    b.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+    dotsNav.appendChild(b);
+  });
+  const dots = Array.from(dotsNav.children);
+
+  function syncActive() {
+    const mid = deck.scrollTop + window.innerHeight / 2;
+    let active = 0;
+    slides.forEach((s, i) => { if (s.offsetTop <= mid) active = i; });
+    dots.forEach((d, i) => d.classList.toggle('active', i === active));
+  }
+  deck.addEventListener('scroll', syncActive, { passive: true });
+  syncActive();
+
+  // Keyboard navigation
+  function go(delta) {
+    const cur = dots.findIndex(d => d.classList.contains('active'));
+    const next = Math.max(0, Math.min(slides.length - 1, cur + delta));
+    slides[next].scrollIntoView({ behavior: 'smooth' });
+  }
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(1); }
+    if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); go(-1); }
+    if (e.key === 'Home') { e.preventDefault(); slides[0].scrollIntoView({ behavior: 'smooth' }); }
+    if (e.key === 'End') { e.preventDefault(); slides[slides.length - 1].scrollIntoView({ behavior: 'smooth' }); }
+  });
+</script>
+</body>
+</html>
